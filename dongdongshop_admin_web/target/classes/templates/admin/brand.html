@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>品牌管理</title>
+	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+	<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+</head>
+<body class="hold-transition skin-red sidebar-mini">
+<!-- .box-body -->
+<div class="box-header with-border">
+	<h3 class="box-title">品牌管理</h3>
+</div>
+
+<div class="box-body">
+
+	<!-- 数据表格 -->
+	<div class="table-box">
+
+		<!--工具栏-->
+		<div class="pull-left">
+			<div class="form-group form-inline">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+					<button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+					<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+				</div>
+			</div>
+		</div>
+		<div class="box-tools pull-right">
+			<div class="has-feedback">
+
+			</div>
+		</div>
+		<!--工具栏/-->
+
+		<!--数据列表-->
+		<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+			<thead>
+			<tr>
+				<th class="" style="padding-right:0px">
+					<input id="selall" type="checkbox" class="icheckbox_square-blue">
+				</th>
+				<th class="sorting_asc">品牌ID</th>
+				<th class="sorting">品牌名称</th>
+				<th class="sorting">品牌首字母</th>
+				<th class="text-center">操作</th>
+			</tr>
+			</thead>
+			<tbody id="get_brand">
+
+			</tbody>
+
+		</table>
+		<!--数据列表/-->
+		<form id="page">
+			<a href="javascript:toPage(3)">首页</a>
+			<a href="javascript:toPage(1)">上一页</a>
+			第<input type="text" name="pageNum" id="pageNum" size="1px" readonly="readonly">页
+			共<input type="text" name="pages" id="pages" size="1px" disabled="disabled">页
+			共<input type="text" name="total" id="total" size="1px" disabled="disabled">条
+			<a href="javascript:toPage(2)">下一页</a>
+			<a href="javascript:toPage(4)">尾页</a>
+		</form>
+
+	</div>
+	<!-- 数据表格 /-->
+
+
+
+
+</div>
+<!-- /.box-body -->
+
+<!-- ----------------------------------------增加窗口 -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">品牌增加</h3>
+			</div>
+			<div class="modal-body">
+				<table class="table table-bordered table-striped"  width="800px">
+					<tr>
+						<td>品牌名称</td>
+						<td><input  class="form-control" placeholder="品牌名称" id="name" name="name">  </td>
+					</tr>
+					<tr>
+						<td>首字母</td>
+						<td><input  class="form-control" placeholder="首字母" id="firstChar" name="firstChar">  </td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="insertBrand()">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- ---------------------------编辑修改窗口 -->
+
+<div class="modal fade" id="editModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel1">品牌编辑</h3>
+			</div>
+			<div class="modal-body" >
+				<input type="hidden" id="upid" name="upid" >
+				<table class="table table-bordered table-striped"  width="800px">
+					<tr>
+						<td>品牌名称</td>
+						<td><input  class="form-control" placeholder="品牌名称" id="upname" name="upname" >  </td>
+					</tr>
+					<tr>
+						<td>首字母</td>
+						<td><input  class="form-control" placeholder="首字母" id="upfirstChar" name="upfirstChar"  >  </td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" aria-hidden="true" onclick="updateBrand()">修改</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+
+<script>
+	$(function (){
+		getBrandInfo();
+	})
+	//查询数据
+	function getBrandInfo(){
+		$.ajax({
+			url:"/brand/ListBrand",
+			dataType:"json",
+			data: $("#page").serialize(),
+			type:"post",
+			async:"false",
+			success:function (result){
+				var list = result.data.rows;
+				var li = "";
+				for (var i = 0; i < list.length; i++) {
+					li += "<tr>"
+					li += "<td>"
+					li += "<input type='checkbox'/>"
+					li += "</td>"
+					li += "<td>"+list[i].id+"</td>"
+					li += "<td>"+list[i].name+"</td>"
+					li += "<td>"+list[i].firstChar+"</td>"
+					li += "<td class='text-center'>"
+					li += "<button type='button' class='btn bg-olive btn-xs' data-toggle='modal' data-target='#editModal1' onclick='getById(" + list[i].id + ")'>"
+					li += "修改"
+					li += "</button>"
+					li += "<button type='button' class='btn bg-olive btn-xs' onclick='deleteBrand("+ list[i].id + ")'>"
+					li += "删除"
+					li += "</button>"
+					li += "</td>"
+					li += "</tr>"
+				}
+				$("#get_brand").html(li)
+
+				$("#pageNum").val(result.data.pageNum);
+				// alert(result.data.pageNum);
+				$("#pages").val(result.data.pages);
+				$("#total").val(result.data.total);
+			},
+			error:function (){
+				alert("系统错误!!!")
+			}
+		})
+	}
+
+	/*分页*/
+	function toPage(id) {
+		var pageNum = parseInt($("#pageNum").val());
+		// alert(pageNum);
+		var pages = parseInt($("#pages").val());
+		if (id == 1) {
+			if (pageNum <= 1) {
+				alert("已是首页");
+				return;
+			}
+			$("#pageNum").val(pageNum - 1);
+		} else if (id == 2) {
+			if (pageNum >= pages) {
+				alert("已是尾页");
+				return;
+			}
+			$("#pageNum").val(pageNum + 1);
+			// alert(pageNum + 1);
+		} else if (id == 3) {
+			$("#pageNum").val(1);
+		} else if (id == 4) {
+			$("#pageNum").val(pages);
+		}
+		getBrandInfo();
+	}
+
+	//增加
+	function insertBrand(){
+		$.ajax({
+			url:"/brand/insertBrand",
+			data:{name:$("#name").val(),firstChar:$("#firstChar").val()},
+			dataType:"json",
+			type:"post",
+			async:"false",
+			success:function (data){
+				if (data){
+					alert("增加成功")
+					window.location.reload();
+				}else {
+					alert("增加失败")
+				}
+			}
+		})
+	}
+
+	//删除
+	function deleteBrand(id){
+
+		//删除
+		if (confirm("确认删除？")){
+			$.get("/brand/deleteBrand",{id:id},function (data){
+				if (data){
+					alert("删除成功")
+					window.location.reload();
+				}else {
+					alert("删除失败")
+				}
+			},"text");
+		}
+	}
+
+	//回显
+	function getById(id){
+		$.ajax({
+			url:"/brand/getBrondById",
+			data:{id:id},
+			dataType:"json",
+			type:"post",
+			async:"false",
+			success:function (data){
+				var name=data.name;
+				var id=data.id;
+				var firstChar=data.firstChar;
+				$("input[id=upname]").val(name);
+				$("input[id=upid]").val(id);
+				$("input[id=upfirstChar]").val(firstChar);
+			}
+		})
+	}
+
+
+
+	function updateBrand(){
+
+		$.get("/brand/updateBrand",{name:$("#upname").val(),firstChar:$("#upfirstChar").val(),id:$("#upid").val()},function (date){
+			if (date){
+				alert("修改成功");
+				window.location.reload();
+
+			}else{
+				alert("修改失败")
+			}
+		},"text")
+	}
+</script>
+
+</html>

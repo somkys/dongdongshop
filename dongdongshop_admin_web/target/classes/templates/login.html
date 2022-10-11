@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<title>东东商城运营商运营管理后台</title>
+	<link rel="icon" href="/assets/img/favicon.ico">
+
+
+	<link rel="stylesheet" type="text/css" href="/css/webbase.css" />
+	<link rel="stylesheet" type="text/css" href="/css/pages-login-manage.css" />
+</head>
+
+<body>
+<div class="loginmanage">
+	<div class="py-container">
+		<h4 class="manage-title">东东商城运营商运营管理</h4>
+		<div class="loginform">
+
+			<ul class="sui-nav nav-tabs tab-wraped">
+				<li>
+					<a href="#index" data-toggle="tab">
+						<h3>扫描登录</h3>
+					</a>
+				</li>
+				<li class="active">
+					<a href="#profile" data-toggle="tab">
+						<h3>账户登录</h3>
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content tab-wraped">
+				<div id="index" class="tab-pane">
+					<p>二维码登录，暂为官网二维码</p>
+					<img src="/img/wx_cz.jpg" />
+				</div>
+				<div id="profile" class="tab-pane  active">
+					<form class="sui-form">
+						<div class="input-prepend"><span class="add-on loginname"></span>
+							<input id="pname" name="pname" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+						</div>
+						<div class="input-prepend"><span class="add-on loginpwd"></span>
+							<input id="pwd" type="pwd" placeholder="请输入密码" class="span2 input-xfat">
+						</div>
+						<div class="setting">
+							<div id="slider">
+								<div id="slider_bg"></div>
+								<span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
+							</div>
+						</div>
+						<div class="logined">
+							<a class="sui-btn btn-block btn-xlarge btn-danger" onclick="tologin()" >登&nbsp;&nbsp;录</a>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+
+<!--foot-->
+<div class="py-container copyright">
+	<ul>
+		<li>关于我们</li>
+		<li>联系我们</li>
+		<li>联系客服</li>
+		<li>商家入驻</li>
+		<li>营销中心</li>
+		<li>手机东东商城</li>
+		<li>销售联盟</li>
+		<li>东东商城社区</li>
+	</ul>
+	<div class="address">地址：北京市昌平区沙阳路18号 邮编：100000 电话：400-0123-302</div>
+	<div class="beian">京ICP备08006666号京公网安备11010888888
+	</div>
+</div>
+
+
+<script type="text/javascript" src="/js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script src="/js/pages/jquery.slideunlock.js"></script>
+<script>
+	$(function(){
+		var slider = new SliderUnlock("#slider",{
+			successLabelTip : "欢迎访问东东商城"
+		},function(){
+			// alert("验证成功,即将跳转至首页");
+			// window.location.href="index.html"
+		});
+		slider.init();
+	})
+
+
+	function tologin(){
+		$.ajax({
+			url:"/person/login",
+			data:{pname:$("#pname").val(),pwd:$("#pwd").val()},
+			dataType:"json",
+			type:"post",
+			async:false,
+			success:function (data){
+				console.log(data);
+				if (data.code==10000){
+					// alert("登录成功")
+					location.href="/person/toindex";
+				}else {
+					alert(data.data)
+				}
+			},
+			error:function (){
+				alert("系统错误，请联系管理员")
+			}
+		})
+	}
+
+</script>
+
+</body>
+</html>

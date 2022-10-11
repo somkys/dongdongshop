@@ -1,0 +1,13 @@
+server:
+  port: 1000
+dubbo:
+  application:
+    name: dongdongshop_admin_web
+  registry:
+    address: zookeeper://127.0.0.1:2181
+spring:
+  thymeleaf:
+    cache: false
+
+shiro:
+  loginUrl: /person/toLogin
