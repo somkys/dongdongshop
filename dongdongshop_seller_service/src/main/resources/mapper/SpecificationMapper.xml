@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongdongshop.mapper.SpecificationMapper">
+
+    <insert id="insertSpecificationNeedId" useGeneratedKeys="true" keyProperty="id">
+        INSERT into tb_specification(spec_name) VALUES (#{specification.specName})
+    </insert>
+</mapper>

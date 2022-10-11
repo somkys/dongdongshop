@@ -2,167 +2,497 @@
 <html>
 
 <head>
-    <!-- 页面meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>规格管理</title>
-    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-    
+	<!-- 页面meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>规格管理</title>
+	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+	<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 
 <body class="hold-transition skin-red sidebar-mini" >
-  <!-- .box-body -->                
-                    <div class="box-header with-border">
-                        <h3 class="box-title">规格管理</h3>
-                    </div>
-                    <div class="box-body">
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+<!-- .box-body -->
+<div class="box-header with-border">
+	<h3 class="box-title">规格管理</h3>
+</div>
+<div class="box-body">
+	<!-- 数据表格 -->
+	<div class="table-box">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-                                        
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">
-							                    规格名称：<input  >									
-									<button class="btn btn-default" >查询</button>                                    
-                                </div>
-                            </div>
-                            <!--工具栏/-->
-			                  <!--数据列表-->
-			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-			                      <thead>
-			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
-										  <th class="sorting_asc">规格ID</th>
-									      <th class="sorting">规格名称</th>									     												
-					                      <th class="text-center">操作</th>
-			                          </tr>
-			                      </thead>
-			                      <tbody>
-			                          <tr >
-			                              <td><input  type="checkbox" ></td>			                              
-				                          <td>1</td>
-									      <td>网络制式</td>
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改</button>                                           
-		                                  </td>
-			                          </tr>
-									  <tr >
-			                              <td><input  type="checkbox" ></td>			                              
-				                          <td>2</td>
-									      <td>服装尺码</td>
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改</button>                                           
-		                                  </td>
-			                          </tr>
-			                      </tbody>
-			                  </table>
-			                  <!--数据列表/-->    
-                        </div>
-                        <!-- 数据表格 /--> 
-                     </div>
-                    <!-- /.box-body -->                    
-	          		    
-                                
-<!-- 编辑窗口 -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">规格编辑</h3>
+		<!--工具栏-->
+		<div class="pull-left">
+			<div class="form-group form-inline">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+					<button type="button" onclick="deleteSpec()"  class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+
+					<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+				</div>
+			</div>
 		</div>
-		<div class="modal-body">							
-			
-			<table class="table table-bordered table-striped"  width="800px">
-		      	<tr>
-		      		<td>规格名称</td>
-		      		<td><input  class="form-control" placeholder="规格名称" >  </td>
-		      	</tr>
-			 </table>				
-			 
-			 <!-- 规格选项 -->
-			 <div class="btn-group">
-                  <button type="button" class="btn btn-default" title="新建" ><i class="fa fa-file-o"></i> 新增规格选项</button>
-                  
-             </div>
-			 
-			 <table class="table table-bordered table-striped table-hover dataTable">
-                    <thead>
-                        <tr>
-                          
-					 
-				      <th class="sorting">规格选项</th>
-				      <th class="sorting">排序</th>																
-                      <th class="sorting">操作</th>	
-                    </thead>
-                    <tbody>
-                      <tr>
-                           
-				            <td>
-				            	<input  class="form-control" placeholder="规格选项"> 
-				            </td>
-				            <td>
-				            	<input  class="form-control" placeholder="排序"> 
-				            </td>
-							<td>
-								<button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-							</td>
-                      </tr>
-					  <tr>
-                         
-				            <td>
-				            	<input  class="form-control" placeholder="规格选项"> 
-				            </td>
-				            <td>
-				            	<input  class="form-control" placeholder="排序"> 
-				            </td>
-							<td>
-								<button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-							</td>
-                      </tr>
-					  <tr>
-                           
-				            <td>
-				            	<input  class="form-control" placeholder="规格选项"> 
-				            </td>
-				            <td>
-				            	<input  class="form-control" placeholder="排序"> 
-				            </td>
-							<td>
-								<button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-							</td>
-                      </tr>
-                    </tbody>
-			  </table> 
-			
-			
+		<div class="box-tools pull-right">
+			<div class="has-feedback">
+				规格名称：<input id="selectSpecName">
+				<button class="btn btn-default" onclick="getData()">查询</button>
+			</div>
 		</div>
-		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
-	  </div>
+		<!--工具栏/-->
+		<!--数据列表-->
+		<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+			<thead>
+			<tr>
+				<th class="" style="padding-right:0px">
+					<input id="selall" type="checkbox" class="icheckbox_square-blue">
+				</th>
+				<th class="sorting_asc">规格ID</th>
+				<th class="sorting">规格名称</th>
+				<th class="text-center">操作</th>
+			</tr>
+			</thead>
+			<tbody id="getAll">
+
+			</tbody>
+		</table>
+		<!--数据列表/-->
+		<form id="indexForm">
+			<input type="hidden" id="selectName" name="specName">
+			<a href="javascript:toPage(3)">首页</a>
+			<a href="javascript:toPage(1)">上一页</a>
+			<a href="javascript:toPage(2)">下一页</a>
+			<a href="javascript:toPage(4)">尾页</a>
+			第<input type="text" name="pageNum" id="pageNum" size="1px" readonly="readonly">页
+			共<input type="text" name="pages" id="pages" size="1px" disabled="disabled">页
+			共<input type="text" name="total" id="total" size="1px" disabled="disabled">条
+		</form>
 	</div>
-</div>    
+	<!-- 数据表格 /-->
+</div>
+<!-- /.box-body -->
+
+
+<!-- z-----------------------------------------------------增加窗口 -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">规格编辑</h3>
+			</div>
+			<div class="modal-body">
+
+				<table class="table table-bordered table-striped"  width="800px">
+					<tr>
+						<td>规格名称</td>
+						<td><input id="specName"  class="form-control" placeholder="规格名称" >  </td>
+					</tr>
+				</table>
+
+				<!-- 规格选项 -->
+				<div class="btn-group">
+					<button type="button" onclick="addSpecOption()" class="btn btn-default" title="新建" ><i class="fa fa-file-o"></i> 新增规格选项</button>
+
+				</div>
+
+				<table class="table table-bordered table-striped table-hover dataTable">
+					<thead>
+					<tr>
+
+
+						<th class="sorting">规格选项</th>
+						<th class="sorting">排序</th>
+						<th class="sorting">操作</th>
+					</thead>
+					<tbody id="cptbody">
+					<tr>
+						<td>
+							<input  class="form-control" placeholder="规格选项">
+						</td>
+						<td>
+							<input  class="form-control" placeholder="排序">
+						</td>
+						<td>
+							<button type="button"  onclick="deleteTr(this)" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input  class="form-control" placeholder="规格选项">
+						</td>
+						<td>
+							<input  class="form-control" placeholder="排序">
+						</td>
+						<td>
+							<button type="button" onclick="deleteTr(this)" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input  class="form-control" placeholder="规格选项">
+						</td>
+						<td>
+							<input  class="form-control" placeholder="排序">
+						</td>
+						<td>
+							<button type="button" onclick="deleteTr(this)" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+
+			</div>
+			<div class="modal-footer">
+				<button onclick="addSpecAndOption()" class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!----------------------------------------------------- 编辑窗口 -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel1">规格编辑</h3>
+			</div>
+			<div class="modal-body">
+
+				<table class="table table-bordered table-striped"  width="800px">
+					<tr>
+						<td>规格名称</td>
+						<td><input  class="form-control" id="updateId" type="hidden">
+							<input id="SpecNameUpdate"  class="form-control" placeholder="规格名称" >  </td>
+					</tr>
+				</table>
+
+				<!-- 规格选项 -->
+				<div class="btn-group">
+					<button type="button" onclick="updateSpecOption()" class="btn btn-default" title="新建" ><i class="fa fa-file-o"></i> 新增规格选项</button>
+
+				</div>
+
+				<table class="table table-bordered table-striped table-hover dataTable">
+					<thead>
+					<tr>
+
+
+						<th class="sorting">规格选项</th>
+						<th class="sorting">排序</th>
+						<th class="sorting">操作</th>
+					</thead>
+					<tbody id="cptbodyUpdate">
+					<td>
+						<input  class="form-control" placeholder="规格选项">
+					</td>
+					<td>
+						<input  class="form-control" placeholder="排序">
+					</td>
+					<td>
+						<button type="button"  onclick="deleteTrUpdate(this)" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+					</td>
+					</tr>
+					<tr>
+
+						<td>
+							<input  class="form-control" placeholder="规格选项">
+						</td>
+						<td>
+							<input  class="form-control" placeholder="排序">
+						</td>
+						<td>
+							<button type="button" onclick="deleteTrUpdate(this)" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+						</td>
+					</tr>
+					<tr>
+
+						<td>
+							<input  class="form-control" placeholder="规格选项">
+						</td>
+						<td>
+							<input  class="form-control" placeholder="排序">
+						</td>
+						<td>
+							<button type="button" onclick="deleteTrUpdate(this)" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+						</td>
+					</tr>
+
+					</tbody>
+				</table>
+
+
+			</div>
+			<div class="modal-footer">
+				<button onclick="UpdateSpecAndOption()" class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 </body>
+
+
+<!--// <tr>-->
+<!--	// 	<td><input type="checkbox"></td>-->
+<!--	// 	<td>1</td>-->
+<!--	// 	<td>网络制式</td>-->
+<!--	// 	<td className="text-center">-->
+<!--	// 		<button type="button" className="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改-->
+<!--	// 		</button>-->
+<!--	// 	</td>-->
+<!--	// </tr>-->
+
+
+<script>
+
+	$(function () {
+		getData();
+	})
+
+	function getData() {
+		var input = $("#selectSpecName").val();
+		$("#selectName").val(input);
+		// console.log($("#indexForm").serialize());
+
+		$.ajax({
+			url: "/specification/listSpecification",
+			type: "post",
+			dataType: "json",
+			data: $("#indexForm").serialize(),
+			async: false,
+			success: function (result) {
+				console.log(result);
+				var data = result.data.rows;
+				console.log(data);
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += ' <tr >'
+					html += '<td><input name="box"  type="checkbox" value="' + data[i].id + '"></td>'
+					html += '<td>' + data[i].id + '</td>'
+					html += '<td>' + data[i].specName + '</td>'
+					html += '<td class="text-center">'
+					html += '<button type="button" onclick="updateSpecification(' + data[i].id + ')" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#updateModal">修改</button>'
+					html += '</td>'
+					html += '</tr>'
+				}
+				$("#getAll").html(html);
+				$("#pageNum").val(result.data.pageNum);
+				$("#pages").val(result.data.pages);
+				$("#total").val(result.data.total);
+			}, error: function () {
+			}
+		})
+	}
+
+	/*分页*/
+	function toPage(id) {
+		var pageNum = parseInt($("#pageNum").val());
+		var pages = parseInt($("#pages").val());
+		if (id == 1) {
+			if (pageNum <= 1) {
+				alert("已是首页");
+				return;
+			}
+			$("#pageNum").val(pageNum - 1);
+		} else if (id == 2) {
+			if (pageNum >= pages) {
+				alert("已是尾页");
+				return;
+			}
+			$("#pageNum").val(pageNum + 1);
+		} else if (id == 3) {
+			$("#pageNum").val(1);
+		} else if (id == 4) {
+			$("#pageNum").val(pages);
+		}
+		getData();
+	}
+
+
+	//增加时给表格最后一行增加一条数据
+	function addSpecOption(){
+		var html='';
+		html += '<tr>';
+		html += '<td><input class="form-control" placeholder="规格选项"></td>';
+		html += '<td><input class="form-control" placeholder="排序"></td>';
+		html += '<td><button type="button" onClick="deleteTr(this)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>';
+		html += '</tr>';
+		$("#cptbody").append(html)
+		//curRow.after(cloneRow)
+		//将新增的行中数据清空
+		$(html).find(":input").val('');
+	}
+	//删除表格的当前行
+	function deleteTr(nowTr) {
+		$(nowTr).parent().parent().remove();
+	}
+
+
+	//修改时给表格最后一行增加一条数据
+	function updateSpecOption(){
+		var html='';
+		html += '<tr>';
+		html += '<td><input class="form-control" placeholder="规格选项"></td>';
+		html += '<td><input class="form-control" placeholder="排序"></td>';
+		html += '<td><button type="button" onClick="deleteTr(this)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>';
+		html += '</tr>';
+		$("#cptbodyUpdate").append(html)
+		//curRow.after(cloneRow)
+		//将新增的行中数据清空
+		$(html).find(":input").val('');
+	}
+	//删除表格的当前行
+	function deleteTrUpdate(nowTr) {
+		$(nowTr).parent().parent().remove();
+	}
+
+
+
+
+
+
+	//保存规格和规格选项数据
+	function addSpecAndOption() {
+		//有一个规格的名字接收规格名称  有一个集合里面是规格的选项对象
+		var trList=$("#cptbody").find("tr");//为了找到选项对象的两个值，先找到tr中的数据
+		console.log(trList);
+		/*for (var i = 0; i < trList.length; i++) {
+				//普通的for循环
+		}*/
+		//循环遍历tr下面的数据
+		var arr=[];
+		$(trList).each(function (i,e) {
+			var tdList=$(e).find("td");//找到下面的td
+			var optionName=$(tdList[0]).find("input").val();//找到下面的input中第一个数据
+			var orders=$(tdList[1]).find("input").val();//找到下面的input中第二个数据
+			//因为我们要的是【{}，{}，{}】的数据所以需要将上面的数据进行转化，先定义数组
+			var json={optionName:optionName,orders:orders};
+			arr.push(json);//转化完成后放进来
+		})
+		//然后我们需要吧得到的对象继续转化为字符串，因为后台需要的是字符串
+		var specOptionJson=JSON.stringify(arr);
+		console.log(arr);
+		console.log(specOptionJson);//将得到的字符串传到后台，ajax中参数传
+
+		$.ajax({
+			url:"/specification/insertSpecification",
+			type:"post",
+			dataType:"json",
+			data:{specName:$("#specName").val(),specOptionJson:specOptionJson},
+			async:false,
+			success:function (result) {
+				if (result){
+					alert("增加成功")
+				}
+				console.log(result);
+			},error:function () {
+				alert("系统异常")
+			}
+		})
+	}
+
+	/*删除*/
+	function deleteSpec() {
+		if (confirm("确定删除选中的信息？")) {
+			let ids = [];
+			let box = document.getElementsByName("box");
+			//获取选中行的信息
+			for (var i = 0; i < box.length; i++) {
+				if (box[i].checked) {
+					ids.push(box[i].value)
+				}
+			}
+			$.ajax({
+				url: "/specification/deleteSpecification",
+				data: {ids: ids},
+				dataType: "json",
+				type: "post",
+				success: function (data) {
+					if (data.code===10000) {
+						alert("删除成功")
+						window.location.reload();//刷新表格
+					} else {
+						alert("删除失败")
+					}
+				}
+			})
+		}
+	}
+	//
+
+	//
+	//回显修改
+	function updateSpecification(id) {
+		$.ajax({
+			url:"/specification/toUpdate",
+			type:"post",
+			dataType:"json",
+			data:{id:id},
+			async: false,//true代表异步请求 ,false代表同步请求
+			success: function (result) {//成功回调函数
+				var spec = result.data;//规格名称
+				var option = spec.specificationOptions;//规格选项列表
+				$("#SpecNameUpdate").val(spec.specName)
+				$("#updateId").val(spec.id)
+				var html = '';
+				for (let i = 0; i < option.length; i++) {
+					html += '<tr>'
+					html += '<td>'
+					html += '<input class="form-control" value="' + option[i].optionName + '" placeholder="规格选项">'
+					html += '</td>'
+					html += '<td>'
+					html += '<input class="form-control" value="' + option[i].orders + '" placeholder="排序">'
+					html += '</td>'
+					html += '<td><button type="button" onClick="deleteTr(this)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>'
+					html += '</tr>'
+				}
+				$("#cptbodyUpdate").html(html)
+			}, error: function () {//错误回调函数
+				console.log("回显出问题啦");
+			}
+		})
+	}
+
+	/*修改*/
+	function UpdateSpecAndOption() {
+		let trList = $("#cptbodyUpdate").find('tr');
+		let optionList = [];
+		for (let i = 0; i < trList.length; i++) {
+			let tdList = $(trList[i]).find('td');
+			let optionName = $(tdList[0]).find('input').val()
+			let orders = $(tdList[1]).find('input').val();
+			let option = {optionName: optionName, orders: orders}
+			optionList.push(option);
+		}
+		let json = JSON.stringify(optionList);
+		console.log(json)
+		$.ajax({
+			url: "/specification/updateSpecificationWithOpen",
+			data: {specName: $("#SpecNameUpdate").val(),id: $("#updateId").val(), json: json},
+			dataType: "json",
+			type: "post",
+			success: function (result) {
+				if (result.code===1000) {
+					alert("修改成功")
+				}else {
+					alert("修改失败啦~")
+				}
+			}
+			,error:function () {
+				alert("修改异常啦~")
+			}
+		})
+	}
+
+</script>
 
 </html>

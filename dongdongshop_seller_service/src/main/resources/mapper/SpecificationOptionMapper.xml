@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dongdongshop.mapper.SpecificationOptionMapper">
+
+    <insert id="insertSpecificationAndOption">
+    insert into tb_specification_option(option_name,spec_id,orders) values
+    <foreach collection="specificationOptions" separator="," item="sp">
+    (#{sp.optionName},#{id},#{sp.orders})
+    </foreach>
+    </insert>
+</mapper>
