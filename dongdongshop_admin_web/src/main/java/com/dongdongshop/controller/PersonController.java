@@ -50,5 +50,7 @@ public class PersonController {
     public String toindex(){
         return "/admin/index";
     }
+
+
 }
 

@@ -73,7 +73,8 @@ public class SpecificationServiceImpl extends ServiceImpl<SpecificationMapper, S
 
         BeanUtils.copyProperties(specification,specificationWithOpen);
 
-        List<SpecificationOption> specificationOptions = specificationOptionMapper.selectList(new QueryWrapper<SpecificationOption>().eq("spec_id", id));
+        List<SpecificationOption> specificationOptions = specificationOptionMapper
+                .selectList(new QueryWrapper<SpecificationOption>().eq("spec_id", id));
 
         specificationWithOpen.setSpecificationOptions(specificationOptions);
 
@@ -100,6 +101,7 @@ public class SpecificationServiceImpl extends ServiceImpl<SpecificationMapper, S
     }
 
     @Override
+    @Transactional
     public boolean deleteSpecification(Long[] ids) {
 
         if (ids==null && ids.length<=0){

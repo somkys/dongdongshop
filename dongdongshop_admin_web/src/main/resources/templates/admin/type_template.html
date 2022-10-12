@@ -2,181 +2,586 @@
 <html>
 
 <head>
-    <!-- 页面meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>类型模板管理</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../plugins/select2/select2.css" />
-    <link rel="stylesheet" href="../plugins/select2/select2-bootstrap.css" />
-    <script src="../plugins/select2/select2.min.js" type="text/javascript"></script>
+	<!-- 页面meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>类型模板管理</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+	<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/plugins/select2/select2.css" />
+	<link rel="stylesheet" href="/plugins/select2/select2-bootstrap.css" />
+	<script src="/plugins/select2/select2.min.js" type="text/javascript"></script>
 
 </head>
 
 <body class="hold-transition skin-red sidebar-mini" >
-  <!-- .box-body -->
-                
-                    <div class="box-header with-border">
-                        <h3 class="box-title">商品类型模板管理</h3>
-                    </div>
+<!-- .box-body -->
 
-                    <div class="box-body">
+<div class="box-header with-border">
+	<h3 class="box-title">商品类型模板管理</h3>
+</div>
 
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+<div class="box-body">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
-                                       
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">
-							                  分类模板名称：<input  >									
-									<button class="btn btn-default">查询</button>                                    
-                                </div>
-                            </div>
-                            <!--工具栏/-->
+	<!-- 数据表格 -->
+	<div class="table-box">
 
-			                  <!--数据列表-->
-			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-			                      <thead>
-			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
-										  <th class="sorting_asc">模板ID</th>
-									      <th class="sorting">分类模板名称</th>
-									      <th class="sorting">关联品牌</th>
-									      <th class="sorting">关联规格</th>									     
-									      <th class="sorting">扩展属性</th>													     						
-					                      <th class="text-center">操作</th>
-			                          </tr>
-			                      </thead>
-			                      <tbody>
-			                          <tr>
-			                              <td><input  type="checkbox"></td>			                              
-				                          <td>1</td>
-									      <td>手机</td>
-									      <td>联想,华为,中兴</td>
-									      <td>网络制式</td>									 
-									      <td></td>		                                                                  
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >修改</button>                                           
-		                                  </td>
-			                          </tr>
-									  <tr>
-			                              <td><input  type="checkbox"></td>			                              
-				                          <td>2</td>
-									      <td>服装</td>
-									      <td>七匹狼,雅戈尔</td>
-									      <td>服装尺码</td>									 
-									      <td></td>		                                                                  
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >修改</button>                                           
-		                                  </td>
-			                          </tr>
-			                      </tbody>
-			                  </table>
-			                  <!--数据列表/-->                        
-							  
-							 
-                        </div>
-                        <!-- 数据表格 /-->
-                        
-                        
-                        
-                        
-                     </div>
-                    <!-- /.box-body -->
-                    
-	           
-					    
-                                
-<!-- 编辑窗口 -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">商品类型模板编辑</h3>
+		<!--工具栏-->
+		<div class="pull-left">
+			<div class="form-group form-inline">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+					<button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+
+					<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+				</div>
+			</div>
 		</div>
-		<div class="modal-body">							
-			
-			<table class="table table-bordered table-striped"  width="800px">
-		      	<tr>
-		      		<td>商品类型</td>
-		      		<td><input  class="form-control" placeholder="商品类型">  </td>
-		      	</tr>			   
-		      	<tr>
-		      		<td>关联品牌</td>
-		      		<td>
-		      			
-		      		</td>
-		      	</tr>
-		      	<tr>
-		      		<td>关联规格</td>
-		      		<td>
-	
-		      		</td>
-		      	</tr>	
-		      	
-		      	<tr>
-		      		<td>扩展属性</td>
-		      		<td>
-		      			<div class="btn-group">
-                             <button type="button" class="btn btn-default" title="新增扩展属性"><i class="fa fa-file-o"></i> 新增扩展属性</button>
-                                                                    
-                        </div>
-						<table class="table table-bordered table-striped"  width="800px">
-							<thead>
+		<div class="box-tools pull-right">
+			<div class="has-feedback">
+				分类模板名称：<input  id="selectName">
+				<button class="btn btn-default" onclick="getTbTypeTemplate()">查询</button>
+			</div>
+		</div>
+		<!--工具栏/-->
+
+		<!--数据列表-->
+		<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+			<thead>
+			<tr>
+				<th class="" style="padding-right:0px">
+					<input id="selall" type="checkbox" class="icheckbox_square-blue">
+				</th>
+				<th class="sorting_asc">模板ID</th>
+				<th class="sorting">分类模板名称</th>
+				<th class="sorting">关联规格</th>
+				<th class="sorting">关联品牌</th>
+				<th class="sorting">扩展属性</th>
+				<th class="text-center">操作</th>
+			</tr>
+			</thead>
+			<tbody id="getAllPage">
+
+			</tbody>
+		</table>
+		<!--数据列表/-->
+		<form id="indexForm">
+			<input type="hidden" id="selectByName" name="name">
+			<a href="javascript:toPage(3)">首页</a>
+			<a href="javascript:toPage(1)">上一页</a>
+			<a href="javascript:toPage(2)">下一页</a>
+			<a href="javascript:toPage(4)">尾页</a>
+			第<input type="text" name="pageNum" id="pageNum" size="1px" readonly="readonly">页
+			共<input type="text" name="pages" id="pages" size="1px" disabled="disabled">页
+			共<input type="text" name="total" id="total" size="1px" disabled="disabled">条
+		</form>
+
+	</div>
+	<!-- 数据表格 /-->
+
+
+
+
+</div>
+<!-- /.box-body -->
+
+
+
+
+<!------------------------------------- 增加窗口 -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel1">商品类型模板编辑</h3>
+			</div>
+			<div class="modal-body">
+
+				<table class="table table-bordered table-striped"  width="800px">
+					<tr>
+						<td>商品类型</td>
+						<td><input  id="name1" name="name" class="form-control" placeholder="商品类型">  </td>
+					</tr>
+					<tr>
+						<td>关联品牌</td>
+						<td>
+							<select id="brand" multiple style="width: 100%">
+								<option th:each="tbbrand : ${brand}" th:value="${tbbrand.id}" th:text="${tbbrand.name}"></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>关联规格</td>
+						<td>
+							<select id="specification" multiple style="width: 100%">
+								<option th:each="specification : ${specifications}" th:value="${specification.id}" th:text="${specification.specName}"></option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td>扩展属性</td>
+						<td>
+							<div class="btn-group">
+								<button type="button" onclick="addTbTypeTemplate()" class="btn btn-default" title="新增扩展属性"><i class="fa fa-file-o"></i> 新增扩展属性</button>
+
+							</div>
+							<table class="table table-bordered table-striped"  width="800px">
+								<thead>
 								<tr>
-								    <td><input type="checkbox" class="icheckbox_square-blue"></td>
-									<td>属性名称</td>									
+									<td><input type="checkbox" class="icheckbox_square-blue"></td>
+									<td>属性名称</td>
 									<td>操作</td>
 								</tr>
-							</thead>
-							<tbody>
+								</thead >
+								<tbody id="cptbody">
 								<tr>
 									<td><input type="checkbox" class="icheckbox_square-blue" ></td>
 									<td><input class="form-control" placeholder="属性名称" ></td>
-									<td><button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>
+									<td><button type="button" onclick="deleteTr(this)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>
 								</tr>
 								<tr>
 									<td><input type="checkbox" class="icheckbox_square-blue" ></td>
 									<td><input class="form-control" placeholder="属性名称" ></td>
-									<td><button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>
+									<td><button type="button" onclick="deleteTr(this)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>
 								</tr>
-							</tbody>
-						</table>	
-           
-		      		</td>
-		      	</tr>	
-		      	      
-			 </table>				
-			
+								</tbody>
+							</table>
+
+						</td>
+					</tr>
+
+				</table>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" onclick="insertTbTypeTemplate()" data-dismiss="modal" aria-hidden="true">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
 		</div>
-		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
-	  </div>
 	</div>
 </div>
-    
+
+<!-- ------------------------------------------------------------------------------编辑窗口 -->
+<!-- ------------------------------------------------------------------------------编辑窗口 -->
+<!-- ------------------------------------------------------------------------------编辑窗口 -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">商品类型模板编辑</h3>
+			</div>
+			<div class="modal-body">
+
+				<table class="table table-bordered table-striped"  width="800px">
+					<tr>
+						<input type="hidden" name="id" id="id">
+						<td>商品类型</td>
+						<td><input id="name"  class="form-control" placeholder="商品类型">  </td>
+					</tr>
+					<tr>
+						<td>关联品牌</td>
+						<td>
+							<select id="brandUpdate" multiple style="width: 100%">
+								<option th:each="tbbrand : ${brand}" th:value="${tbbrand.id}" th:text="${tbbrand.name}"></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>关联规格</td>
+						<td>
+							<select id="specificationUpdate" multiple style="width: 100%">
+								<option th:each="specification : ${specifications}" th:value="${specification.id}" th:text="${specification.specName}"></option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td>扩展属性</td>
+						<td>
+							<div class="btn-group">
+								<button type="button" onclick="upTbTypeTemplate()" class="btn btn-default" title="新增扩展属性"><i class="fa fa-file-o"></i> 新增扩展属性</button>
+
+							</div>
+							<table class="table table-bordered table-striped"  width="800px">
+								<thead>
+								<tr>
+									<td><input type="checkbox" class="icheckbox_square-blue"></td>
+									<td>属性名称</td>
+									<td>操作</td>
+								</tr>
+								</thead>
+								<tbody id="cptbodyUpdate" >
+								<tr >
+									<td><input type="checkbox" class="icheckbox_square-blue" ></td>
+									<td><input class="form-control" placeholder="属性名称" ></td>
+									<td><button type="button" onclick="deleteTr(this)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" class="icheckbox_square-blue" ></td>
+									<td><input class="form-control" placeholder="属性名称" ></td>
+									<td><button type="button" onclick="deleteTr(this)" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button></td>
+								</tr>
+								</tbody>
+							</table>
+
+						</td>
+					</tr>
+
+				</table>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" onclick="updateTypeTemplate()" data-dismiss="modal" aria-hidden="true">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
+
+
+<script>
+
+	//将下拉框给变成strce2形式也就是多选形式，先再select后面加上multiple 然后是下面的页面加载函数
+	$(function () {
+		$("#brand").select2();
+		$("#specification").select2();
+
+		$("#brandUpdate").select2();
+		$("#specificationUpdate").select2();
+	})
+
+
+	$(function () {
+		getTbTypeTemplate();
+	})
+	function getTbTypeTemplate() {
+		var input = $("#selectSpecName").val();
+		$("#selectByName").val(input)
+		var name = $("#selectName").val();
+		$.ajax({
+			url: "/template/getAllPage",
+			type: "post",
+			dataType: "json",
+			data:{name:name},
+			async: false,
+			success: function (result) {
+				console.log(result);
+				var data = result.data.rows;
+				console.log(data);
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += ' <tr >'
+					html += '<td><input name="box"  type="checkbox" value="' + data[i].id + '"></td>'
+					html += '<td>' + data[i].id + '</td>'
+					html += '<td>' + data[i].name + '</td>'
+					html += '<td>'
+					var spec=JSON.parse(data[i].specIds);
+					for (var j = 0; j < spec.length; j++) {
+						if (j==spec.length-1){
+							html +=spec[j].text
+						}else {
+							html +=spec[j].text+','
+						}
+					}
+					html +='</td>'
+					html += '<td>'
+					var brand=JSON.parse(data[i].brandIds);
+					for (var j = 0; j < brand.length; j++) {
+						if (j==brand.length-1){
+							html +=brand[j].text
+						}else {
+							html +=brand[j].text+','
+						}
+					}
+					html +='</td>'
+					html += '<td>'
+					var custom=JSON.parse(data[i].customAttributeItems);
+					for (var j = 0; j < custom.length; j++) {
+						if (j==custom.length-1){
+							html +=custom[j].text
+						}else {
+							html +=custom[j].text+','
+						}
+					}
+					html +='</td>'
+					// html += '<td></td>'
+					html += '<td className="text-center">'
+					html += '<button type="button" onclick="updateTbTypeTemplate(' + data[i].id + ')" className="btn bg-olive btn-xs" data-toggle="modal" data-target="#updateModal">修改</button>'
+					html += '<button type="button" onclick="deleteTbTypeTemplate(' + data[i].id + ')" className="btn bg-olive btn-xs" >删除</button>'
+					html += '</td>'
+					html += '</tr>'
+
+				}
+				$("#getAllPage").html(html);
+				$("#pageNum").val(result.data.pageNum);
+				$("#pages").val(result.data.pages);
+				$("#total").val(result.data.total);
+			}, error: function () {
+			}
+		})
+	}
+
+	/*分页*/
+	function toPage(id) {
+		var pageNum = parseInt($("#pageNum").val());
+		var pages = parseInt($("#pages").val());
+		if (id == 1) {
+			if (pageNum <= 1) {
+				alert("已是首页");
+				return;
+			}
+			$("#pageNum").val(pageNum - 1);
+		} else if (id == 2) {
+			if (pageNum >= pages) {
+				alert("已是尾页");
+				return;
+			}
+			$("#pageNum").val(pageNum + 1);
+		} else if (id == 3) {
+			$("#pageNum").val(1);
+		} else if (id == 4) {
+			$("#pageNum").val(pages);
+		}
+		getTbTypeTemplate();
+	}
+
+
+
+	//增加框框-----------------------------------------------------------
+	function addTbTypeTemplate() {
+		//新增扩展属性
+		var html="<tr>\n" +
+				"\t\t\t\t\t\t\t\t\t<td><input type=\"checkbox\" class=\"icheckbox_square-blue\" ></td>\n" +
+				"\t\t\t\t\t\t\t\t\t<td><input class=\"form-control\" placeholder=\"属性名称\" ></td>\n" +
+				"\t\t\t\t\t\t\t\t\t<td><button type=\"button\" onclick=\"deleteTr(this)\" class=\"btn btn-default\" title=\"删除\"><i class=\"fa fa-trash-o\"></i> 删除</button></td>\n" +
+				"\t\t\t\t\t\t\t\t</tr>"
+		$("#cptbody").append(html)
+		//curRow.after(cloneRow)
+		//将新增的行中数据清空
+		$(html).find(":input").val('');
+	}
+	//修改时候增加扩展属性框框-------------------------------------
+	function upTbTypeTemplate() {
+		//修改时候增加扩展属性框框
+		var html="<tr>\n" +
+				"\t\t\t\t\t\t\t\t\t<td><input type=\"checkbox\" class=\"icheckbox_square-blue\" ></td>\n" +
+				"\t\t\t\t\t\t\t\t\t<td><input class=\"form-control\" placeholder=\"属性名称\" ></td>\n" +
+				"\t\t\t\t\t\t\t\t\t<td><button type=\"button\" onclick=\"deleteTr(this)\" class=\"btn btn-default\" title=\"删除\"><i class=\"fa fa-trash-o\"></i> 删除</button></td>\n" +
+				"\t\t\t\t\t\t\t\t</tr>"
+		$("#cptbodyUpdate").append(html)
+		//curRow.after(cloneRow)
+		//将新增的行中数据清空
+		$(html).find(":input").val('');
+	}
+
+
+
+	//增加到数据库
+	function insertTbTypeTemplate() {
+		var name=$("#name1").val();
+		var brandList=$("#brand").select2('data');
+		console.log(brandList);
+
+		var brandArr=[];   //遍历拿到里面的元素放到数组中
+		$(brandList).each(function (i,e) {
+			var json={id:e.id,text:e.text};
+			brandArr.push(json);
+			console.log(e.id);
+			console.log(e.text);
+			return;
+		})
+		var brandJson=JSON.stringify(brandArr)
+		console.log(brandJson);
+		//----------------规格
+		var specIdsList=$("#specification").select2('data');
+		//console.log(specIdsList);
+		var specIdArr=[];
+		$(specIdsList).each(function (i,e){
+			var json={id:e.id,text:e.text};
+			specIdArr.push(json);
+		})
+		var specIdsJson= JSON.stringify(specIdArr);
+		//console.log(brandArr);
+		console.log(specIdsJson);//将字符串提交controller
+
+		//---------------属性
+		var typeList=$("#cptbody").find("tr");
+		var typeArr=[];
+		$(typeList).each(function (i,e){
+			var tdList=$(e).find("td");
+			var type = $(tdList[1]).find("input").val();
+			var json = {text:type};
+			typeArr.push(json);
+		})
+		var typeJson= JSON.stringify(typeArr);
+		console.log(typeArr);
+		console.log(typeJson);//将字符串提交controller
+		$.ajax({
+			url:"/template/insertTbTypeTemplate",
+			type:"post",
+			dataType:"json",
+			data:{name:name,brandIds:brandJson,specIds:specIdsJson,customAttributeItems:typeJson},
+			async:false,
+			success:function (result) {
+				if (result){
+					alert("增加成功")
+				}
+				console.log(result);
+			},error:function () {
+				alert("系统异常")
+			}
+		})
+	}
+
+
+	//删除表格的当前行
+	function deleteTr(nowTr) {
+		$(nowTr).parent().parent().remove();
+	}
+
+
+	/*删除-----------------------------------------------------------------*/
+	function deleteTbTypeTemplate(id){
+		//删除
+		if (confirm("确认删除？")){
+			$.get("/template/deleteTbTypeTemplate",{id:id},function (data){
+				if (data){
+					alert("删除成功")
+
+				}else {
+					alert("删除失败")
+				}
+			},"text");
+		}
+	}
+
+
+
+	//修改回显=================================================================
+	function updateTbTypeTemplate(id) {
+		$.ajax({
+			url: "/template/getByIdTemplate",
+			type: "post",
+			dataType: "json",
+			data:{id:id}, //$("#indexForm").serialize(),
+			async: false,
+			success: function (result) {
+				//拿到数据库中typetemplate中name的id 然后遍历查回显到页面
+				var typeTemplate = result.data;
+				$("#name").val(typeTemplate.name);
+				$("#id").val(typeTemplate.id);
+				//拿到数据库中typetemplate中brand的id 然后遍历查回显到页面---------------------------------
+				var typeTemplate = result.data;
+				var brandList=JSON.parse(typeTemplate.brandIds);
+				// console.log(brandList);
+				// return;
+				var brandIdArr = [];
+				$(brandList).each(function (i,e) {
+					brandIdArr.push(e.id);
+				})
+				//select2回显
+				$("#brandUpdate").val(brandIdArr).trigger("change")
+
+				//拿到数据库中typetemplate中spec的id 然后遍历查回显到页面---------------------------------
+				var typeTemplate = result.data;
+				var specList=JSON.parse(typeTemplate.specIds);
+				// console.log(brandList);
+				// return;
+				var specIdsArr = [];
+				$(specList).each(function (i,e) {
+					specIdsArr.push(e.id);
+				})
+				//select2回显
+				$("#specificationUpdate").val(specIdsArr).trigger("change")
+				//-------------------------属性
+				var tem1 =result.data.customAttributeItems;
+				var tem2=JSON.parse(tem1);
+				console.log(tem2);
+				var html = '';
+				for (let i = 0; i < tem2.length; i++) {
+					html += '<tr>'
+					html += '    <td>'
+					html += '    	<input type="checkbox" className="icheckbox_square-blue">'
+					html += '    </td>'
+					html += '    <td>'
+					html += '        <input className="form-control" value="' + tem2[i].text + '" placeholder="属性名称">'
+					html += '    </td>'
+					html += '    <td>'
+					html += '        <button type="button" onclick="delTr(this)" className="btn btn-default" title="删除"><i className="fa fa-trash-o"></i> 删除</button>'
+					html += '    </td>'
+					html += '</tr>'
+				}
+				$("#cptbodyUpdate").html(html)
+//
+				// -------------------------
+				var typeList=$("#cptbodyUpdate").find("tr");
+				var typeArr=[];
+				$(typeList).each(function (i,e){
+					var tdList=$(e).find("td");
+					var type = $(tdList[1]).find("input").val();
+					var json = {text:type};
+					typeArr.push(json);
+				})
+			}, error: function () {
+				alert("错误了")
+			}
+		})
+
+	}
+
+
+	//修改数据库数据
+	function updateTypeTemplate() {
+		var id=$("#id").val();
+		var name=$("#name").val();
+		var brandList=$("#brandUpdate").select2('data');
+		var brandArr=[];   //遍历拿到里面的元素放到数组中
+		$(brandList).each(function (i,e) {
+			var json={id:e.id,text:e.text};
+			brandArr.push(json);
+			return;
+		})
+		var brandJson=JSON.stringify(brandArr)
+		var specIdsList=$("#specificationUpdate").select2('data');
+		var specIdArr=[];
+		$(specIdsList).each(function (i,e){
+			var json={id:e.id,text:e.text};
+			specIdArr.push(json);
+		})
+		var specIdsJson= JSON.stringify(specIdArr);
+		console.log(specIdsJson);//将字符串提交controller
+		var typeList=$("#cptbodyUpdate").find("tr");
+		var typeArr=[];
+		$(typeList).each(function (i,e){
+			var tdList=$(e).find("td");
+			var type = $(tdList[1]).find("input").val();
+			var json = {text:type};
+			typeArr.push(json);
+		})
+		var typeJson= JSON.stringify(typeArr);
+		$.ajax({
+			url: "/template/updateTbTypeTemplate",
+			data: {id:id,name:name,brandIds:brandJson,specIds:specIdsJson,customAttributeItems:typeJson},
+			dataType: "json",
+			type: "post",
+			success: function (data) {
+				alert("修改成功")
+			},error:function () {
+				alert("修改异常啦~")
+			}
+		})
+	}
+</script>
 
 </html>
