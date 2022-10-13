@@ -1,6 +1,4 @@
 package com.dongdongshop.controller;
-
-
 import com.dongdongshop.entity.ItemCat;
 import com.dongdongshop.service.IItemCatService;
 import com.dongdongshop.service.ITypeTemplateService;
@@ -80,7 +78,7 @@ public class ItemCatController {
     public Result deleteItemCat(@PathVariable("ids") Long[] ids){
        boolean b = itemCatService.deleteItemCat(ids);
        if (!b){
-           return Result.ER();
+           return Result.ER().setData("请先删除子节点");
        }
        return Result.Ok();
     }

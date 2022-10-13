@@ -9,6 +9,7 @@ import com.dongdongshop.service.IItemCatService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,34 +38,18 @@ public class ItemCatServiceImpl extends ServiceImpl<ItemCatMapper, ItemCat> impl
     @Override
     public boolean deleteItemCat(Long[] ids) {
 
-        //所有id的集合
-        List<Long> idsAll = new ArrayList<>();
-
         //一级分类
         List<Long> oneIds = Arrays.asList(ids);
 
-        oneIds.stream().forEach(id->idsAll.add(id));
+        //判断当前节点是否还有子节点
+        List<ItemCat> itemCats = baseMapper.selectList(new QueryWrapper<ItemCat>().in("parent_id", oneIds));
 
-        //二级分类
-        List<Long> twoIds = baseMapper.selectList(new QueryWrapper<ItemCat>().in("parent_id", oneIds))
-                .stream()
-                .map(itemCat -> itemCat.getId())
-                .collect(Collectors.toList());
-
-        if (twoIds.size()<=0){
-            int i = baseMapper.deleteBatchIds(idsAll);
-            if (i<=0){
-                return false;
-            }
-            return true;
+        //itemCats != null
+        if (itemCats.size()>0){
+            return false;
         }
 
-        twoIds.stream().forEach(aLong -> idsAll.add(aLong));
-
-        //三级分类
-        baseMapper.selectList(new QueryWrapper<ItemCat>().in("parent_id", twoIds)).stream().forEach(itemCat -> idsAll.add(itemCat.getId()));
-
-        int i = baseMapper.deleteBatchIds(idsAll);
+        int i = baseMapper.deleteBatchIds(oneIds);
 
         if (i<=0){
             return false;
@@ -72,7 +57,5 @@ public class ItemCatServiceImpl extends ServiceImpl<ItemCatMapper, ItemCat> impl
         return true;
 
     }
-
-
 
 }
