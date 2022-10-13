@@ -9,6 +9,7 @@
         <module name="dongdongshop_common" />
         <module name="dongdongshop_service_api" />
         <module name="dongdongshop_seller_service" />
+        <module name="dongdongshop_seller_web" />
         <module name="dongdongshop_admin_web" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
       <module name="dongdongshop_admin_web" options="-parameters" />
       <module name="dongdongshop_common" options="-parameters" />
       <module name="dongdongshop_seller_service" options="-parameters" />
+      <module name="dongdongshop_seller_web" options="-parameters" />
       <module name="dongdongshop_service_api" options="-parameters" />
     </option>
   </component>

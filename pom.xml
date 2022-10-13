@@ -13,6 +13,7 @@
         <module>dongdongshop_seller_service</module>
         <module>dongdongshop_admin_web</module>
         <module>dongdongshop_service_api</module>
+        <module>dongdongshop_seller_web</module>
     </modules>
 
     <parent>

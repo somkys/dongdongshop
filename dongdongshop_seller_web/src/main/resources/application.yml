@@ -1,0 +1,13 @@
+server:
+  port: 2000
+dubbo:
+  application:
+    name: dongdongshop_seller_web
+  registry:
+    address: zookeeper://127.0.0.1:2181
+spring:
+  thymeleaf:
+    cache: false
+
+shiro:
+  loginUrl: /seller/tologin

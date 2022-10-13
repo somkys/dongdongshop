@@ -53,6 +53,11 @@
 
 					$("#onName").text(nname);
 					$("#onName1").text(nname);
+					if (id === 0){
+						document.getElementById('saveBtn').setAttribute('item',0)
+					}else{
+						document.getElementById('saveBtn').setAttribute('item',id)
+					}
 				},
 				error:function (){
 					alert("系统错误!!!")
@@ -183,7 +188,7 @@
 <div class="box-body">
 	<ol class="breadcrumb" id="classification">
 		<li>
-			<a  href="javascript:window.location.reload()" >顶级分类列表</a>
+			<a  href="javascript:window.location.reload()">顶级分类列表</a>
 		</li>
 	</ol>
 
@@ -194,7 +199,7 @@
 		<div class="pull-left">
 			<div class="form-group form-inline">
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+					<button type="button" class="btn btn-default" id="saveBtn" title="新建" onclick="toAdd()" ><i class="fa fa-file-o"></i> 新建</button>
 					<button type="button" class="btn btn-default" title="删除" onclick="deleteItemCat()"><i class="fa fa-trash-o"></i> 删除</button>
 					<button type="button" class="btn btn-default" title="刷新" ><i class="fa fa-check"></i> 刷新</button>
 
@@ -244,7 +249,7 @@
 			<div class="modal-body">
 
 				<table class="table table-bordered table-striped"  width="800px">
-					<tr>
+					<tr id="parentText">
 						<td>上级商品分类</td>
 						<td id="onName">
 						</td>
@@ -320,3 +325,15 @@
 
 </body>
 </html>
+<script>
+	function toAdd(){
+		const item = document.getElementById('saveBtn').getAttribute('item')
+		console.log(item)
+		if (item == 0){
+			$('#parentText').css('display','none')
+		}else{
+			$('#parentText').css('display','block')
+		}
+		$('#editModal').modal('show')
+	}
+</script>
