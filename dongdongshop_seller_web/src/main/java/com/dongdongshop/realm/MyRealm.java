@@ -1,11 +1,7 @@
 package com.dongdongshop.realm;
-
-import com.dongdongshop.entity.Person;
 import com.dongdongshop.entity.Seller;
 import com.dongdongshop.exctption.LoginException;
-import com.dongdongshop.service.IPersonService;
 import com.dongdongshop.service.ISellerService;
-import com.dongdongshop.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shiro.authc.*;
@@ -14,9 +10,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Component;
-
 import java.util.Objects;
-
 import static com.dongdongshop.enume.ResuleMenu.*;
 
 @Component

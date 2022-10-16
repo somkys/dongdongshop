@@ -16,4 +16,5 @@ public interface ITypeTemplateService extends IService<TypeTemplate> {
 
     PageResult<TypeTemplate> selectBrandPage(Integer pageNum, Integer pageSize , String name);
 
+
 }

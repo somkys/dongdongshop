@@ -10,12 +10,13 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.Objects;
 import static com.dongdongshop.enume.ResuleMenu.*;
 
 /**
@@ -43,10 +44,9 @@ public class SellerController {
         return "shoplogin";
     }
 
-    @RequestMapping("loginsuccess")
-    @ResponseBody
+    @RequestMapping("toindex")
     public String loginsuccess() {
-        return "登录成功";
+        return "/admin/index";
     }
 
     @RequestMapping("login")
