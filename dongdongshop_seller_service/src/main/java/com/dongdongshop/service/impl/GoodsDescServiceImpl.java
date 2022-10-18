@@ -1,19 +1,26 @@
 package com.dongdongshop.service.impl;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import cn.hutool.json.JSONUtil;
 import com.dongdongshop.entity.Goods;
 import com.dongdongshop.entity.GoodsDesc;
+import com.dongdongshop.entity.Item;
 import com.dongdongshop.mapper.GoodsDescMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.dongdongshop.mapper.GoodsMapper;
 import com.dongdongshop.service.IGoodsDescService;
 import com.dongdongshop.service.IGoodsService;
+import com.dongdongshop.service.IItemService;
 import com.dongdongshop.vo.GoodsWithGoodsEditVO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -30,9 +37,12 @@ public class GoodsDescServiceImpl extends ServiceImpl<GoodsDescMapper, GoodsDesc
     @DubboReference
     IGoodsService iGoodsService;
 
+    @DubboReference
+    IItemService itemService;
+
     @Override
     @Transactional
-    public boolean addGoodsAndDesc(GoodsWithGoodsEditVO goodsWithGoodsEditVO) {
+    public boolean addGoodsAndDesc(GoodsWithGoodsEditVO goodsWithGoodsEditVO , String ite) {
         Goods goods = new Goods();
 
         BeanUtils.copyProperties(goodsWithGoodsEditVO,goods);
@@ -53,9 +63,25 @@ public class GoodsDescServiceImpl extends ServiceImpl<GoodsDescMapper, GoodsDesc
         //商品ID
         goodsDesc.setGoodsId(goods.getId());
 
-        int insert = baseMapper.insert(goodsDesc);
+        baseMapper.insert(goodsDesc);
 
-        if (insert<=0){
+        List<Item> items = JSONUtil.toList(ite, Item.class);
+
+        List<Item> items1 = items.stream().map(item -> {
+            item.setTitle(goodsWithGoodsEditVO.getCaption());
+            item.setCategoryId(goodsWithGoodsEditVO.getCategory3Id());
+            item.setStatus("1");
+            item.setUpdateTime(LocalDateTime.now());
+            item.setCreateTime(LocalDateTime.now());
+            item.setGoodsId(goods.getId());
+            item.setSellerId(goodsWithGoodsEditVO.getSellerId());
+            item.setSeller(goodsWithGoodsEditVO.getSeller());
+            return item;
+        }).collect(Collectors.toList());
+
+        boolean b = itemService.saveBatch(items1);
+
+        if (!b){
             return false;
         }
         return true;

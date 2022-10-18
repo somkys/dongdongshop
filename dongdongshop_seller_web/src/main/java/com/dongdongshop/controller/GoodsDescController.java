@@ -1,14 +1,19 @@
 package com.dongdongshop.controller;
+import cn.hutool.json.JSONUtil;
 import com.dongdongshop.entity.ItemCat;
 import com.dongdongshop.entity.Seller;
 import com.dongdongshop.entity.TypeTemplate;
 import com.dongdongshop.service.IGoodsDescService;
 import com.dongdongshop.service.IItemCatService;
+import com.dongdongshop.service.ISpecificationService;
 import com.dongdongshop.service.ITypeTemplateService;
 import com.dongdongshop.utils.Result;
 import com.dongdongshop.vo.GoodsWithGoodsEditVO;
+import com.dongdongshop.vo.SpecificationWithOpen;
+import com.dongdongshop.vo.TemplateVo;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,6 +40,10 @@ public class GoodsDescController {
     @DubboReference
     IGoodsDescService iGoodsDescService;
 
+    @DubboReference
+    ISpecificationService iSpecificationService;
+
+
     @RequestMapping("togoodedit")
     public String togoodedit(){
         return "/admin/goods_edit";
@@ -54,23 +63,41 @@ public class GoodsDescController {
     public Result getTemById(Long id){
         ItemCat itemCat = itemCatService.getById(id);
         TypeTemplate typeTemplate = iTypeTemplateService.getById(itemCat.getTypeId());
-        return Result.Ok().setData(typeTemplate);
+        //获取规格字符串
+        String specIds = typeTemplate.getSpecIds();
+
+        List<SpecificationWithOpen> specificationWithOpens = JSONUtil.toList(specIds, SpecificationWithOpen.class);
+
+        for (SpecificationWithOpen specificationWithOpen : specificationWithOpens) {
+            SpecificationWithOpen vo = iSpecificationService.toUpdate(specificationWithOpen.getId());
+            specificationWithOpen.setSpecificationOptions(vo.getSpecificationOptions());
+        }
+
+        TemplateVo templateVo = new TemplateVo();
+
+        BeanUtils.copyProperties(typeTemplate,templateVo);
+
+        templateVo.setSpecificationWithOpenList(specificationWithOpens);
+
+        return Result.Ok().setData(templateVo);
     }
 
 
     @RequestMapping("addGoodsAndDesc")
     @ResponseBody
-    public Result addGoodsAndDesc(GoodsWithGoodsEditVO goodsWithGoodsEditVO){
+    public Result addGoodsAndDesc(GoodsWithGoodsEditVO goodsWithGoodsEditVO,String item){
         Seller seller = (Seller) SecurityUtils.getSubject().getPrincipal();
         //商家ID
         goodsWithGoodsEditVO.setSellerId(seller.getSellerId());
+        //商家名称
+        goodsWithGoodsEditVO.setSeller(seller.getName());
 
-        boolean b = iGoodsDescService.addGoodsAndDesc(goodsWithGoodsEditVO);
+        boolean b = iGoodsDescService.addGoodsAndDesc(goodsWithGoodsEditVO,item);
 
-       if (!b){
-           return Result.ER();
-       }
-       return Result.Ok();
+        if (!b){
+            return Result.ER();
+        }
+        return Result.Ok();
     }
 
 

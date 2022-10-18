@@ -36,6 +36,11 @@ public class MyRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         Seller seller = iSellerService.getSellerByLoginname(token.getUsername());
 
+        //用户不存在
+        if (seller==null) {
+            return null;
+        }
+
         //未审核
         if (Objects.equals(seller.getStatus(), "0")) {
             throw new LoginException(SHIRO_LOGIN_ERROR.getMsg(), SHIRO_LOGIN_ERROR.getCode());
@@ -51,9 +56,6 @@ public class MyRealm extends AuthorizingRealm {
             throw new LoginException(SHIRO_LOGIN_ERROR_CLOST.getMsg(),SHIRO_LOGIN_ERROR_CLOST.getCode());
         }
 
-        if (Objects.isNull(seller)) {
-            return null;
-        }
         return new SimpleAuthenticationInfo(seller,seller.getPassword(), ByteSource.Util.bytes(seller.getSalt()),seller.getSellerId());
     }
 }

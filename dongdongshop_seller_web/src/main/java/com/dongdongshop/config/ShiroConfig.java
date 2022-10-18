@@ -42,6 +42,7 @@ public class ShiroConfig {
         definition.addPathDefinition("/css/**","anon");//所有静态资源
         definition.addPathDefinition("/img/**","anon");//所有静态资源
         definition.addPathDefinition("/plugins/**","anon");
+        definition.addPathDefinition("/oss/**","anon");
         definition.addPathDefinition("/seller/toregister","anon");
         definition.addPathDefinition("/seller/getCountByName","anon");
         definition.addPathDefinition("/seller/insertSeller","anon");

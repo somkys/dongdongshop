@@ -121,4 +121,8 @@ public class GoodsWithGoodsEditVO implements Serializable {
      */
     private String saleService;
 
+    private String itemList;
+
+    private String seller;
+
 }

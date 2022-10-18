@@ -21,6 +21,9 @@
 	<script charset="utf-8" src="/plugins/kindeditor/kindeditor-min.js"></script>
 	<script charset="utf-8" src="/plugins/kindeditor/lang/zh_CN.js"></script>
 
+	<script src="/plugins/bootstrap-fileinput/js/fileinput.js"></script>
+	<link href="/plugins/bootstrap-fileinput/css/fileinput.css" rel="stylesheet"/>
+	<script src="/plugins/bootstrap-fileinput/js/locales/zh.js"></script>
 
 
 
@@ -126,6 +129,7 @@
 							<textarea rows="4"  class="form-control" id="saleService" name="saleService"    placeholder="售后服务"></textarea>
 						</div>
 
+						<input id="item" type="hidden" name="item" >
 
 					</div>
 				</div>
@@ -147,16 +151,16 @@
 								<th class="sorting">图片</th>
 								<th class="sorting">操作</th>
 							</thead>
-							<tbody>
-							<tr>
-								<td>
+							<tbody id="images">
+<!--							<tr>-->
+<!--								<td>-->
 
-								</td>
-								<td>
-									<img alt="" src="" width="100px" height="100px">
-								</td>
-								<td> <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button></td>
-							</tr>
+<!--								</td>-->
+<!--								<td>-->
+<!--									<img alt="" src="" width="100px" height="100px">-->
+<!--								</td>-->
+<!--								<td> <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button></td>-->
+<!--							</tr>-->
 							</tbody>
 						</table>
 
@@ -178,20 +182,6 @@
 							</tr>
 						</div>
 					</table>
-					<!--        <div class="row data-type">
-                                <div>
-                                    <div class="col-md-2 title">扩展属性1</div>
-                                    <div class="col-md-10 data">
-                                          <input class="form-control" placeholder="扩展属性1">
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="col-md-2 title">扩展属性2</div>
-                                    <div class="col-md-10 data">
-                                          <input class="form-control" placeholder="扩展属性2">
-                                    </div>
-                                </div>
-                            </div>-->
 				</div>
 
 				<!--规格-->
@@ -206,40 +196,8 @@
 
 					<div>
 
-						<div class="row data-type">
+						<div id="specList" class="row data-type">
 
-							<div name="specificationName">
-								<div class="col-md-2 title">屏幕尺寸</div>
-								<div class="col-md-10 data">
-
-					                            <span>
-					                            	<input  type="checkbox" >4.0
-					                            </span>
-									<span>
-					                            	<input  type="checkbox" >4.5
-					                            </span>
-									<span>
-					                            	<input  type="checkbox" >5.0
-					                            </span>
-
-								</div>
-							</div>
-							<div name="specificationName">
-								<div class="col-md-2 title">网络制式</div>
-								<div class="col-md-10 data">
-
-					                            <span>
-					                            	<input  type="checkbox" >2G
-					                            </span>
-									<span>
-					                            	<input  type="checkbox" >3G
-					                            </span>
-									<span>
-					                            	<input  type="checkbox" >4G
-					                            </span>
-
-								</div>
-							</div>
 
 						</div>
 
@@ -265,10 +223,10 @@
 										3G
 									</td>
 									<td>
-										<input class="form-control"  placeholder="价格">
+										<input class="form-control price"  placeholder="价格">
 									</td>
 									<td>
-										<input class="form-control" placeholder="库存数量">
+										<input class="form-control num" placeholder="库存数量">
 									</td>
 									<td>
 										<input type="checkbox" >
@@ -285,10 +243,10 @@
 										4G
 									</td>
 									<td>
-										<input class="form-control"  placeholder="价格">
+										<input class="form-control price"  placeholder="价格">
 									</td>
 									<td>
-										<input class="form-control" placeholder="库存数量">
+										<input class="form-control num" placeholder="库存数量">
 									</td>
 									<td>
 										<input type="checkbox" >
@@ -305,10 +263,10 @@
 										3G
 									</td>
 									<td>
-										<input class="form-control"  placeholder="价格">
+										<input class="form-control price"  placeholder="价格">
 									</td>
 									<td>
-										<input class="form-control" placeholder="库存数量">
+										<input class="form-control num" placeholder="库存数量">
 									</td>
 									<td>
 										<input type="checkbox" >
@@ -325,10 +283,10 @@
 										4G
 									</td>
 									<td>
-										<input class="form-control"  placeholder="价格">
+										<input class="form-control price"  placeholder="价格">
 									</td>
 									<td>
-										<input class="form-control" placeholder="库存数量">
+										<input class="form-control num" placeholder="库存数量">
 									</td>
 									<td>
 										<input type="checkbox" >
@@ -345,16 +303,11 @@
 
 					</div>
 				</div>
-
 			</div>
 			<!--tab内容/-->
 			<!--表单内容/-->
 
 		</div>
-
-
-
-
 	</div>
 	<div class="btn-toolbar list-toolbar">
 		<button class="btn btn-primary" onclick="add()"><i class="fa fa-save"></i>保存</button>
@@ -373,35 +326,24 @@
 				<h3 id="myModalLabel">上传商品图片</h3>
 			</div>
 			<div class="modal-body">
-
 				<table class="table table-bordered table-striped">
 					<tr>
 						<td>颜色</td>
-						<td><input  class="form-control" placeholder="颜色" >  </td>
+						<td>
+							<input  class="form-control" id="color" placeholder="颜色" >
+							<input type="text" class="form-control" id="imageUrl" >
+						</td>
 					</tr>
 					<tr>
 						<td>商品图片</td>
 						<td>
-							<table>
-								<tr>
-									<td>
-										<input type="file" id="file" />
-										<button class="btn btn-primary" type="button" >
-											上传
-										</button>
-									</td>
-									<td>
-										<img  src="" width="200px" height="200px">
-									</td>
-								</tr>
-							</table>
+							<input type="file" id="testfile" name="myFile"/>
 						</td>
 					</tr>
 				</table>
-
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-success"  data-dismiss="modal" aria-hidden="true">保存</button>
+				<button class="btn btn-success" onclick="saveImgAndColor()"  data-dismiss="modal" aria-hidden="true">保存</button>
 				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
 			</div>
 		</div>
@@ -500,13 +442,56 @@
 					})
 					$("#customAttributeTable").html(html);
 
+
+					var voList=data.specificationWithOpenList;
+					var specHtml='<table>';
+					$(voList).each(function (i,e) {
+						specHtml +='<tr>'
+						specHtml +='<td>'+e.text+'</td>'
+						specHtml +='<td>'
+						var opList = e.specificationOptions;
+						$(opList).each(function (i,v){
+							specHtml += '<span>'
+							specHtml += '<input value="'+v.optionName+'" type="checkbox">'+v.optionName
+							specHtml += '</span>'
+						})
+						specHtml += '</td>'
+						specHtml += '</tr>'
+					})
+					specHtml += '</table>';
+					$("#specList").html(specHtml)
 				}
 			}
 		})
 	}
 
 
+
+
 	function add(){
+		var price = $(".price")
+		var num = $(".num")
+		var priceNumArr = [];
+		for (var i = 0; i < price.length; i++) {
+			// var priceJson=price[i].value;
+			// var numJson=num[i].value;
+			var json = {price: price[i].value, num: num[i].value}
+			priceNumArr.push(json)
+		}
+		var priceNumJson=JSON.stringify(priceNumArr);
+		console.log(priceNumJson)
+
+
+		var imgList = $(".images")
+		var colorList = $(".colors")
+		var list = [];
+//-----------------------遍历拼接商品图片信息
+		for (var i = 0; i < imgList.length; i++) {
+			var json = {imageUrl: imgList[i].src, color: $(colorList[i]).html()}
+			list.push(json)
+		}
+		var imageJson = JSON.stringify(list)
+
 		var goodsName=$("#goodsName").val();		//SPU名
 		var brandId=$("#brandId").val();			//品牌ID
 		var caption=$("#caption").val();			//副标题
@@ -519,7 +504,7 @@
 		var typeTemplateId=$("#ItemCatId").val();	//模板ID
 		var introduction=editor.text();				//富文本框内容
 
-		/*扩展属性*/
+		/!*扩展属性*!/
 		var customAtt = $("#customAttributeTable").find('tr');
 		var customArr = [];
 		for (let i = 0; i < customAtt.length; i++) {
@@ -550,7 +535,6 @@
 				brandId:brandId,
 				caption:caption,
 				price:price,
-				//itemImages:itemjson,//图片路径，颜色
 				category1Id:category1Id,
 				category2Id:category2Id,
 				category3Id:category3Id,
@@ -558,7 +542,9 @@
 				packageList:packageList,
 				saleService:saleService,
 				typeTemplateId:typeTemplateId,
-				customAttributeItems:customAttributeItems
+				itemImages:imageJson,
+				customAttributeItems:customAttributeItems,
+				item:priceNumJson
 			},
 			success:function (result) {
 				if (result.code==10000){
@@ -572,4 +558,49 @@
 
 		})
 	}
+
+	//图片和颜色保存
+	function saveImgAndColor() {
+		var img = $("#imageUrl").val();
+		var color = $("#color").val();
+
+		var html = "<tr>" +
+				"<td><span class='colors'>" + color + "</span></td>" +
+				"<td><img class='images' src='" + img + "' width='100px' height='100px'></td>" +
+				"<td><button type='button' class='btn btn-default' onclick='deleteRow(this)' title='删除'>删除</button></td></tr>";
+		$("#images").append(html);
+	}
+
+	//商品图片 删除当前行元素
+	function deleteRow(element) {
+		var trElement = element.parentNode.parentNode;
+		trElement.parentNode.removeChild(trElement);
+	}
+
+	$('#testfile').fileinput({
+		language: 'zh',
+		uploadUrl: "/oss/upload",
+		showCaption: true,  //是否显示文本框
+		showUpload: true,   //是否显示上传按钮
+		showRemove: true,   //是否显示移除按钮
+		showClose: false,    //是否显示关闭按钮
+		browseClass: 'btn btn-primary' , //按钮样式
+		// showPreview:false设置不能拖拽上传
+		showBrowse:true,
+		allowedFileExtensions:["txt","jpg","gif","png"],//设置文件上传后的后缀名
+		maxFileSize:20480,//设置文件最大多大
+		maxFileCount:4,//设置一次最多上传几个文件
+		enctype:"multipart/form-data",
+	});
+	$('#testfile').on("fileuploaded",function (event,data,previewId,index) {
+		// $("#rimage").val(data.response.code);
+		if (data.response.code==10000){
+			alert("上传成功")
+			$("#imageUrl").val(data.response.data);
+		}
+	})
+
+
+
+
 </script>

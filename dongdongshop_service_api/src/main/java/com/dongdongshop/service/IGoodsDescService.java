@@ -3,6 +3,7 @@ package com.dongdongshop.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.dongdongshop.entity.GoodsDesc;
 import com.dongdongshop.vo.GoodsWithGoodsEditVO;
+import com.dongdongshop.vo.TemplateVo;
 
 /**
  * <p>
@@ -14,6 +15,7 @@ import com.dongdongshop.vo.GoodsWithGoodsEditVO;
  */
 public interface IGoodsDescService extends IService<GoodsDesc> {
 
-    boolean addGoodsAndDesc(GoodsWithGoodsEditVO goodsWithGoodsEditVO);
+    boolean addGoodsAndDesc(GoodsWithGoodsEditVO goodsWithGoodsEditVO , String item);
+
 
 }

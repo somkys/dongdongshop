@@ -4,7 +4,6 @@ import com.dongdongshop.page.PageResult;
 import com.dongdongshop.service.IBrandService;
 import com.dongdongshop.utils.Result;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
