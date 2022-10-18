@@ -2,159 +2,376 @@
 <html>
 
 <head>
-    <!-- 页面meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>广告管理</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-    
+	<!-- 页面meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>广告管理</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+	<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/AdminLTE.css">
+	<link rel="stylesheet" href="/plugins/adminLTE/css/skins/_all-skins.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+	<!--	<%&#45;&#45;bootStrap-fileinput文件上传&#45;&#45;%>-->
+	<script src="/plugins/bootstrap-fileinput/js/fileinput.js"></script>
+	<link href="/plugins/bootstrap-fileinput/css/fileinput.css" rel="stylesheet"/>
+	<script src="/plugins/bootstrap-fileinput/js/locales/zh.js"></script>
+
 </head>
 
 <body class="hold-transition skin-red sidebar-mini">
-  <!-- .box-body -->
-                
-                    <div class="box-header with-border">
-                        <h3 class="box-title">广告管理</h3>
-                    </div>
+<!-- .box-body -->
 
-                    <div class="box-body">
+<div class="box-header with-border">
+	<h3 class="box-title">广告管理</h3>
+</div>
 
-                        <!-- 数据表格 -->
-                        <div class="table-box">
+<div class="box-body">
 
-                            <!--工具栏-->
-                            <div class="pull-left">
-                                <div class="form-group form-inline">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-                                        <button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
-                                        <button type="button" class="btn btn-default" title="开启" onclick='confirm("你确认要开启吗？")'><i class="fa fa-check"></i> 开启</button>
-                                        <button type="button" class="btn btn-default" title="屏蔽" onclick='confirm("你确认要屏蔽吗？")'><i class="fa fa-ban"></i> 屏蔽</button>
-                                        <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tools pull-right">
-                                <div class="has-feedback">
-							                                  
-                                </div>
-                            </div>
-                            <!--工具栏/-->
+	<!-- 数据表格 -->
+	<div class="table-box">
 
-			                  <!--数据列表-->
-			                  <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
-			                      <thead>
-			                          <tr>
-			                              <th class="" style="padding-right:0px">
-			                                  <input id="selall" type="checkbox" class="icheckbox_square-blue">
-			                              </th> 
-										  <th class="sorting_asc">广告ID</th>
-									      <th class="sorting">分类ID</th>
-									      <th class="sorting">标题</th>
-									      <th class="sorting">URL</th>		
-									      <th class="sorting">图片</th>	
-									      <th class="sorting">排序</th>		
-									      <th class="sorting">是否有效</th>											     						      							
-					                      <th class="text-center">操作</th>
-			                          </tr>
-			                      </thead>
-			                      <tbody>
-			                          <tr>
-			                              <td><input  type="checkbox"></td>			                              
-				                          <td>1</td>
-									      <td>1</td>
-									      <td>促销海报1</td>
-									      <td>http://wwww.hb.com/hd1.html</td>
-									      <td>
-									      	<img alt="" src="" width="100px" height="50px">
-									      </td>
-									      <td>1</td>
-									      <td>有效</td>									     								     
-		                                  <td class="text-center">                                           
-		                                 	  <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改</button>                                           
-		                                  </td>
-			                          </tr>
-			                      </tbody>
-			                  </table>
-			                  <!--数据列表/--> 
-                        </div>
-                        <!-- 数据表格 /-->
-                     </div>
-                    <!-- /.box-body -->
+		<!--工具栏-->
+		<div class="pull-left">
+			<div class="form-group form-inline">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
+					<button type="button" class="btn btn-default" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
+					<button type="button" class="btn btn-default" title="开启" onclick='confirm("你确认要开启吗？")'><i class="fa fa-check"></i> 开启</button>
+					<button type="button" class="btn btn-default" title="屏蔽" onclick='confirm("你确认要屏蔽吗？")'><i class="fa fa-ban"></i> 屏蔽</button>
+					<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+				</div>
+			</div>
+		</div>
+		<div class="box-tools pull-right">
+			<div class="has-feedback">
 
-		
-<!-- 编辑窗口 -->
+			</div>
+		</div>
+		<!--工具栏/-->
+
+		<!--数据列表-->
+		<table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+			<thead>
+			<tr>
+				<th class="" style="padding-right:0px">
+					<input id="selall" type="checkbox" class="icheckbox_square-blue">
+				</th>
+				<th class="sorting_asc">广告ID</th>
+				<th class="sorting">分类ID</th>
+				<th class="sorting">标题</th>
+				<th class="sorting">URL</th>
+				<th class="sorting">图片</th>
+				<th class="sorting">是否有效</th>
+				<th class="sorting">排序</th>
+
+				<th class="text-center">操作</th>
+			</tr>
+			</thead>
+			<tbody id="getContent">
+			</tbody>
+		</table>
+		<!--数据列表/-->
+	</div>
+	<!-- 数据表格 /-->
+</div>
+<!-- /.box-body -->
+
+
+<!------------------------------------------------ 增加窗口 -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">广告编辑</h3>
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">广告编辑</h3>
+			</div>
+			<div class="modal-body">
+				<form id="addContent">
+					<table class="table table-bordered table-striped"  width="800px">
+						<tr>
+							<td>广告分类</td>
+							<td>
+								<select id="contentCategory" name="categoryId" class="form-control" >
+									<option th:each="tbcategory : ${tbContentCategory}" th:value="${tbcategory.id}" th:text="${tbcategory.name}"></option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>标题</td>
+							<td><input id="title" name="title"  class="form-control" placeholder="标题" >  </td>
+						</tr>
+						<tr>
+							<td>URL</td>
+							<td><input id="url" name="url"  class="form-control" placeholder="URL" >  </td>
+						</tr>
+						<tr>
+							<td>排序</td>
+							<td><input id="sortOrder" name="sortOrder"  class="form-control" placeholder="排序" >  </td>
+						</tr>
+						<tr>
+							<td>广告图片</td>
+							<td>
+								<table>
+									<tr>
+										<td>
+											<div class="form-group">
+												<input type="file" id="testfile" name="myFile"/>
+												<input type="text" class="form-control" id="imageUrl" name="pic" >
+
+											</div>
+										</td>
+									</tr>
+								</table>
+
+							</td>
+						</tr>
+								      	<tr>
+								      		<td>是否有效</td>
+								      		<td>
+								      		   <input id="status" name="status"  class="form-control" placeholder="1是2否" >
+								      		</td>
+								      	</tr>
+					</table>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button onclick="insertContent()" class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
 		</div>
-		<div class="modal-body">							
-			
-			<table class="table table-bordered table-striped"  width="800px">
-				<tr>
-		      		<td>广告分类</td>
-		      		<td>
-		      			<select class="form-control" >
-		                </select>
-		      		</td>
-		      	</tr>
-		      	<tr>
-		      		<td>标题</td>
-		      		<td><input  class="form-control" placeholder="标题" >  </td>
-		      	</tr>
-			    <tr>
-		      		<td>URL</td>
-		      		<td><input  class="form-control" placeholder="URL" >  </td>
-		      	</tr>	
-		      	<tr>
-		      		<td>排序</td>
-		      		<td><input  class="form-control" placeholder="排序" >  </td>
-		      	</tr>			      	
-		      	<tr>
-		      		<td>广告图片</td>
-		      		<td>
-						<table>
-							<tr>
-								<td>
-								<input type="file" id="file" />				                
-					                <button class="btn btn-primary" type="button" >
-				                   		上传
-					                </button>	
-					            </td>
-								<td>
-									<img  src="{{entity.pic}}" width="200px" height="100px">
-								</td>
-							</tr>						
-						</table>
-		      		</td>
-		      	</tr>	      
-		      	<tr>
-		      		<td>是否有效</td>
-		      		<td>
-		      		   <input type="checkbox" class="icheckbox_square-blue" >
-		      		</td>
-		      	</tr>  	
-			 </table>				
-			
+	</div>
+</div>
+<!--  -0------------------------------------------------------------修改-->
+<div class="modal fade" id="editModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" >
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel1">广告编辑</h3>
+			</div>
+			<div class="modal-body">
+				<form id="updateForm">
+					<input name="id" type="hidden">
+					<table class="table table-bordered table-striped"  width="800px">
+						<tr>
+							<td>广告分类</td>
+							<td>
+								<!--						<select id="brand"  style="width: 100%">-->
+								<!--							<option th:each="tbbrand : ${brand}" th:value="${tbbrand.id}" th:text="${tbbrand.name}"></option>-->
+								<!--						</select>-->
+								<select  name="categoryId" class="form-control" >
+									<option th:each="tbcategory : ${tbContentCategory}" th:value="${tbcategory.id}" th:text="${tbcategory.name}"></option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>标题</td>
+							<td><input  name="title"  class="form-control" placeholder="标题" >  </td>
+						</tr>
+						<tr>
+							<td>URL</td>
+							<td><input  name="url"  class="form-control" placeholder="URL" >  </td>
+						</tr>
+						<tr>
+							<td>排序</td>
+							<td><input  name="sortOrder"  class="form-control" placeholder="排序" >  </td>
+						</tr>
+						<tr>
+							<td>广告图片</td>
+							<td>
+								<table>
+									<tr>
+										<td>
+											<div class="form-group">
+												<input type="file"  name="myFile" id="myFile2"/>
+												<input type="text" class="form-control" id="imageUrl2"  name="pic" >
+
+
+
+											</div>
+										</td>
+									</tr>
+								</table>
+
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button onclick="updateContent()" class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
+				<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+			</div>
 		</div>
-		<div class="modal-footer">						
-			<button class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
-			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
-		</div>
-	  </div>
 	</div>
 </div>
 
 </body>
 
+<script>
+	$(function () {
+		getData();
+	})
+	function getData() {
+		$.ajax({
+			url: "/content/listContent",
+			data: {},
+			type: "post",
+			dataType: "json",
+			success: function (result) {
+				if (result) {
+					var contentList = result.data;
+					var html = '';
+					$.each(contentList, function (i, e) {
+						html += '<tr>'
+						html += '<td ><input type = "checkbox" ></td>'
+						html += '<td>'+e.id+'</td>'
+						html += '<td>'+e.categoryId+'</td>'
+						html += '<td>'+e.title+'</td>'
+						html += '<td>'+e.url+'</td>'
+						html +='<td><img alt="" src="'+e.pic+'" width="100px" height="50px"></td>'
+						html +='<td>'+e.status+'</td>'
+						html +='<td>'+e.sortOrder+'</td>'
+						html +='<td className="text-center">'
+						html +='<button type="button" onclick="toUpdate(' + e.id + ')" className="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModalUpdate">修改</button>'
+						html +='<button onclick="deleteContent(' + e.id +')" type="button" className="btn bg-olive btn-xs" data-toggle="modal" >删除</button>'
+						html +='</td>'
+						html += '</tr>'
+					})
+					$("#getContent").html(html);
+				} else {
+					alert(result.message);
+				}
+			}, error: function (data) {
+				alert("系统异常");
+			}
+		})
+	}
+
+
+	function insertContent() {
+		$.ajax({
+			url:"/content/insertContent",
+			data:$("#addContent").serialize(),
+			dataType:"json",
+			type:"post",
+			async:"false",
+			success:function (data){
+				if (data.code===10000){
+					alert("增加成功")
+					window.location.reload();
+				}else {
+					alert("增加失败")
+				}
+			}
+		})
+	}
+
+	function deleteContent(id) {
+		//删除
+		if (confirm("确认删除？")){
+			$.get("/content/deleteContent",{id:id},function (data){
+				if (data){
+					alert("删除成功")
+					window.location.reload();
+				}else {
+					alert("删除失败")
+				}
+			},"json");
+		}
+	}
+
+
+	//回显
+	function toUpdate(id){
+		$.ajax({
+			url:"/content/toUpdateContent",
+			type:"post",
+			dataType:"json",
+			data:{id: id},
+			success:function (result){
+
+				if(result.code == 10000) {
+					var l = result.data;
+					$("#myFile2").fileinput({
+						language: 'zh',
+						uploadUrl: '/content/upload',
+						maxFileCount: 5,
+						enctype: "multipart/form-data",
+						maxFileSize: 1024,
+						allowedFileExtensions: ["jpg", "png", "gif"],
+						browseClass: 'btn btn-primary',
+						initialPreviewAsData: true,
+						initialPreview: l.pic,
+					})
+
+					$("#myFile2").on('fileuploaded', function (event, data, previewId, index) {
+						var imgUrl = data.response.data;
+						$("#imageUrl2").val(imgUrl);
+					})
+
+					var l = result.data;
+					$("[name=id]").val(l.id)
+					$("[name=pic]").val(l.pic)
+					$("[name=sortOrder]").val(l.sortOrder)
+					$("[name=title]").val(l.title)
+					$("[name=url]").val(l.url)
+					$("[name=categoryId]").val(l.categoryId).trigger("change")
+				}
+			},
+			error:function (result){
+				alert("网络错误");
+			}
+		})
+	}
+
+
+
+	function updateContent() {
+		$.ajax({
+			url:"/content/updateContent",
+			type:"post",
+			dataType:"json",
+			data:$("#updateForm").serialize(),
+			success:function (result){
+				if(result) {
+					alert("修改成功")
+					window.location.reload();
+				}
+			},
+			error:function (result){
+				alert("网络错误");
+			}
+		})
+
+	}
+
+
+
+	$('#testfile').fileinput({
+		language: 'zh',
+		uploadUrl: "/content/upload",
+		showCaption: true,  //是否显示文本框
+		// showUpload: true,   //是否显示上传按钮
+		// showRemove: true,   //是否显示移除按钮
+		// showClose: false,    //是否显示关闭按钮
+		browseClass: 'btn btn-primary' , //按钮样式
+		//showPreview:false设置不能拖拽上传
+		// showBrowse:true,
+		allowedFileExtensions:["txt","jpg","gif","png"],//设置文件上传后的后缀名
+		maxFileSize:20480,//设置文件最大多大
+		maxFileCount:4,//设置一次最多上传几个文件
+		enctype:"multipart/form-data",
+	});
+	$('#testfile').on("fileuploaded",function (event,data,previewId,index) {
+		if (data.response.code==10000){
+			// alert("上传成功")
+			$("#imageUrl").val(data.response.data);
+		}
+	})
+</script>
 </html>

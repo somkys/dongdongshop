@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="dongdongshop_seller_service" />
+        <module name="dongdongshop_admin_web" />
+        <module name="dongdongshop_content_service" />
+        <module name="dongdongshop_app" />
         <module name="dongdongshop_common" />
         <module name="dongdongshop_service_api" />
-        <module name="dongdongshop_seller_service" />
         <module name="dongdongshop_seller_web" />
-        <module name="dongdongshop_admin_web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,7 +22,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="dongdongshop_admin_web" options="-parameters" />
+      <module name="dongdongshop_app" options="-parameters" />
       <module name="dongdongshop_common" options="-parameters" />
+      <module name="dongdongshop_content_service" options="-parameters" />
       <module name="dongdongshop_seller_service" options="-parameters" />
       <module name="dongdongshop_seller_web" options="-parameters" />
       <module name="dongdongshop_service_api" options="-parameters" />

@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dongdongshop.mapper.GoodsMapper">
+    <update id="updateAuditStatus">
+        UPDATE tb_goods SET audit_status = #{auditStatus} where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </update>
 
+    <select id="listGoodsVo" resultType="com.dongdongshop.vo.GoodsVo">
+        SELECT
+            s.*,
+            t.`name` AS category1Name,
+            a.`name` AS category2Name,
+            c.`name` AS category3Name
+        FROM
+            `tb_goods` s
+                JOIN tb_item_cat t ON s.category1_id = t.id
+                JOIN tb_item_cat a ON s.category2_id = a.id
+                JOIN tb_item_cat c ON s.category3_id = c.id
+        <where>
+            is_delete = '1'
+            <if test="goodsName != '' and goodsName != null ">
+                and s.goods_name like concat("%",#{goodsName},"%")
+            </if>
+        </where>
+    </select>
 </mapper>
