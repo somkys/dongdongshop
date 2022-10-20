@@ -1,17 +1,10 @@
 server:
-  port: 1000
+  port: 4000
 dubbo:
   application:
-    name: dongdongshop_admin_web
+    name: dongdongshop_freemarker_service
   registry:
     address: zookeeper://127.0.0.1:2181
-spring:
-  thymeleaf:
-    cache: false
-
-shiro:
-  loginUrl: /person/toLogin
-
 rocketmq:
   name-server: 192.168.198.129:9876
   producer:

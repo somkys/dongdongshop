@@ -12,6 +12,7 @@
         <module name="dongdongshop_app" />
         <module name="dongdongshop_common" />
         <module name="dongdongshop_service_api" />
+        <module name="dongdongshop_freemarker_service" />
         <module name="dongdongshop_seller_web" />
       </profile>
     </annotationProcessing>
@@ -25,6 +26,7 @@
       <module name="dongdongshop_app" options="-parameters" />
       <module name="dongdongshop_common" options="-parameters" />
       <module name="dongdongshop_content_service" options="-parameters" />
+      <module name="dongdongshop_freemarker_service" options="-parameters" />
       <module name="dongdongshop_seller_service" options="-parameters" />
       <module name="dongdongshop_seller_web" options="-parameters" />
       <module name="dongdongshop_service_api" options="-parameters" />

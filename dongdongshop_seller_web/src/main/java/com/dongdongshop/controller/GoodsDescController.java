@@ -1,5 +1,6 @@
 package com.dongdongshop.controller;
 import cn.hutool.json.JSONUtil;
+import com.dongdongshop.entity.GoodsDesc;
 import com.dongdongshop.entity.ItemCat;
 import com.dongdongshop.entity.Seller;
 import com.dongdongshop.entity.TypeTemplate;
@@ -47,6 +48,13 @@ public class GoodsDescController {
     @RequestMapping("togoodedit")
     public String togoodedit(){
         return "/admin/goods_edit";
+    }
+
+    @RequestMapping("test")
+    @ResponseBody
+    public Result test(Long id){
+        GoodsDesc byId = iGoodsDescService.getGoodsDescById(id);
+        return Result.Ok().setData(byId);
     }
 
     //三级分类

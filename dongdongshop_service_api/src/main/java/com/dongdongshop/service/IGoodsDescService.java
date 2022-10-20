@@ -18,4 +18,6 @@ public interface IGoodsDescService extends IService<GoodsDesc> {
     boolean addGoodsAndDesc(GoodsWithGoodsEditVO goodsWithGoodsEditVO , String item);
 
 
+    GoodsDesc getGoodsDescById(Long goodsId);
+
 }

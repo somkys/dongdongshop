@@ -11,3 +11,8 @@ spring:
 
 shiro:
   loginUrl: /person/toLogin
+
+rocketmq:
+  name-server: 192.168.198.129:9876
+  producer:
+    group: group1

@@ -16,6 +16,7 @@
         <module>dongdongshop_seller_web</module>
         <module>dongdongshop_content_service</module>
         <module>dongdongshop_app</module>
+        <module>dongdongshop_freemarker_service</module>
     </modules>
 
     <parent>

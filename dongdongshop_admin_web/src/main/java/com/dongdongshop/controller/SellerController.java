@@ -1,11 +1,15 @@
 package com.dongdongshop.controller;
+import cn.hutool.json.JSONUtil;
 import com.dongdongshop.entity.Seller;
 import com.dongdongshop.page.PageResult;
 import com.dongdongshop.service.IGoodsService;
 import com.dongdongshop.service.ISellerService;
 import com.dongdongshop.utils.Result;
 import com.dongdongshop.vo.GoodsVo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +21,7 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("sellerperson")
+@Slf4j
 public class SellerController {
 
     @DubboReference
@@ -24,6 +29,9 @@ public class SellerController {
 
     @DubboReference
     IGoodsService iGoodsService;
+
+    @Autowired
+    RocketMQTemplate rocketMQTemplate;//模板类：建连接及断连结
 
     @RequestMapping("toseller1")
     public String toseller(){
@@ -80,6 +88,14 @@ public class SellerController {
        boolean b = iGoodsService.updateAuditStatus(ids,auditStatus);
        if (!b){
            return Result.ER();
+       }
+       if (Objects.equals("1",auditStatus)) {
+           //尝试构造消息
+           List<Long> longs = Arrays.asList(ids);
+           String s = JSONUtil.toJsonStr(longs);
+           //尝试发送消息
+           rocketMQTemplate.convertAndSend("topic1",s);
+           log.info("发送消息成功,消息为:{}",s);
        }
        return Result.Ok();
     }
