@@ -42,6 +42,7 @@ public class ContentServiceImpl extends ServiceImpl<ContentMapper, Content> impl
         String key = "carousel:lunbotu";
         //查询redis缓存
         List<String> stringList = new ArrayList<>();
+
          stringList = stringRedisTemplate.opsForList().range(key, 0, -1);
         //判断缓存是否命中
         if (!stringList.isEmpty()){

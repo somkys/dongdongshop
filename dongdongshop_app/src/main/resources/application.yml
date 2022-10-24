@@ -8,3 +8,21 @@ dubbo:
 spring:
   thymeleaf:
     cache: false
+  redis:
+    host: 192.168.198.129
+    port: 6379
+    password: 123456
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 1
+        time-between-eviction-runs: 10s
+
+rocketmq:
+  name-server: 192.168.198.129:9876
+  producer:
+    group: group2
+
+shiro:
+  loginUrl: /

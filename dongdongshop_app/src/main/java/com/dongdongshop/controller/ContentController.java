@@ -15,11 +15,6 @@ public class ContentController {
     @DubboReference
     IContentService iContentService;
 
-    @RequestMapping("toindex")
-    public String toindex(){
-        return "index";
-    }
-
     //查询首页轮播图
     @RequestMapping("carousel")
     @ResponseBody

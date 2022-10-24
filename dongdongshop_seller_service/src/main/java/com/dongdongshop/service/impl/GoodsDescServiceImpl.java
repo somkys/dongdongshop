@@ -107,6 +107,7 @@ public class GoodsDescServiceImpl extends ServiceImpl<GoodsDescMapper, GoodsDesc
                 items1.get(i).setSpec("{\"屏幕尺寸\":\"5.5寸\",\"网络制式\":\"联通3G\"}");
                 itemList.add(items1.get(i));
             }
+
         }
 
         boolean b = itemService.saveBatch(itemList);

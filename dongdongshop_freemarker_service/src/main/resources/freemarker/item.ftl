@@ -148,7 +148,7 @@
 						<div class="fl">
 							<ul class="btn-choose unstyled">
 								<li>
-									<a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+									<a href="javascript:addCart()"  class="sui-btn  btn-danger addshopcar">加入购物车</a>
 								</li>
 							</ul>
 						</div>
@@ -533,7 +533,6 @@
 <!--页面底部  开始 -->
 
 <#include "foot.ftl">
-
 <!--页面底部  结束 -->
 </body>
 
@@ -611,6 +610,16 @@
 		sum+=num;
 		$("#itxt").val(sum);
 	}
+
+	function addCart() {
+		var num = $("#itxt").val();
+		if (itemId == -1){
+			alert("请选择要购买的商品")
+			return;
+		}
+		location.href="http://localhost:3000/cart/addcart?itemId="+itemId+"&num="+num;
+	}
+
 </script>
 
 </html>

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>设置-个人信息</title>
-     <link rel="icon" href="assets/img/favicon.ico">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+	<title>设置-个人信息</title>
+	<link rel="icon" href="assets/img/favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
+	<link rel="stylesheet" type="text/css" href="/css/webbase.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/pages-seckillOrder.css"/>
 </head>
 
 <body>
-    <!-- 头部栏位 -->
-    <!--页面顶部-->
+<!-- 头部栏位 -->
+<!--页面顶部-->
 <div id="nav-bottom">
 	<!--顶部-->
 	<div class="nav-top">
@@ -23,7 +23,8 @@
 				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">东东商城欢迎您！</li>
-						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+						<li class="f-item">请<a href="/logincontroller/toLogin" target="_parent">登录</a>　<span><a
+								href="/registercontroller/toRegister" target="_blank">免费注册</a></span></li>
 					</ul>
 					<ul class="fr">
 						<li class="f-item">我的订单</li>
@@ -64,7 +65,7 @@
 							<form action="" class="sui-form form-inline">
 								<!--searchAutoComplete-->
 								<div class="input-append">
-									<input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
+									<input id="autocomplete" type="text" class="input-error input-xxlarge"/>
 									<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
 								</div>
 							</form>
@@ -122,192 +123,286 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-	$("#service").hover(function(){
-		$(".service").show();
-	},function(){
-		$(".service").hide();
-	});
-	$("#shopcar").hover(function(){
-		$("#shopcarlist").show();
-	},function(){
-		$("#shopcarlist").hide();
-	});
+	$(function () {
+		$("#service").hover(function () {
+			$(".service").show();
+		}, function () {
+			$(".service").hide();
+		});
+		$("#shopcar").hover(function () {
+			$("#shopcarlist").show();
+		}, function () {
+			$("#shopcarlist").hide();
+		});
 
-})
+	})
 </script>
-<script type="text/javascript" src="js/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
-<script type="text/javascript" src="js/widget/nav.js"></script>
-<script type="text/javascript" src="pages/userInfo/distpicker.data.js"></script>
-<script type="text/javascript" src="pages/userInfo/distpicker.js"></script>
-<script type="text/javascript" src="pages/userInfo/main.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/js/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="/js/widget/nav.js"></script>
+<script type="text/javascript" src="/pages/userInfo/distpicker.data.js"></script>
+<script type="text/javascript" src="/pages/userInfo/distpicker.js"></script>
+<script type="text/javascript" src="/pages/userInfo/main.js"></script>
 </body>
-    <!--header-->
-    <div id="account">
-        <div class="py-container">
-            <div class="yui3-g home">
-                <!--左侧列表-->
-                <div class="yui3-u-1-6 list">
+<!--header-->
+<div id="account">
+	<div class="py-container">
+		<div class="yui3-g home">
+			<!--左侧列表-->
+			<div class="yui3-u-1-6 list">
 
-                    <div class="person-info">
-                        <div class="person-photo"><img src="img/_/photo.png" alt=""></div>
-                        <div class="person-account">
-                            <span class="name">Michelle</span>
-                            <span class="safe">账户安全</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="list-items">
-                        <dl>
-							<dt><i>·</i> 订单中心</dt>
-							<dd ><a href="home-index.html"   >我的订单</a></dd>
-							<dd><a href="home-order-pay.html" >待付款</a></dd>
-							<dd><a href="home-order-send.html"  >待发货</a></dd>
-							<dd><a href="home-order-receive.html" >待收货</a></dd>
-							<dd><a href="home-order-evaluate.html" >待评价</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="home-person-collect.html" >我的收藏</a></dd>
-							<dd><a href="home-person-footmark.html" >我的足迹</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 物流消息</dt>
-						</dl>
-						<dl>
-							<dt><i>·</i> 设置</dt>
-							<dd><a href="home-setting-info.html" >个人信息</a></dd>
-							<dd><a href="home-setting-address.html" class="list-active" >地址管理</a></dd>
-							<dd><a href="home-setting-safe.html" >安全管理</a></dd>
-						</dl>
-                    </div>
-                </div>
-                <!--右侧主内容-->
-                <div class="yui3-u-5-6">
-                    <div class="body userAddress">
-                        <div class="address-title">
-                            <span class="title">地址管理</span>
-                            <a data-toggle="modal" data-target=".edit" data-keyboard="false"   class="sui-btn  btn-info add-new">添加新地址</a>
-                            <span class="clearfix"></span>
-                        </div>
-                        <div class="address-detail">
-                            <table class="sui-table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>姓名</th>
-                                        <th>地址</th>
-                                        <th>联系电话</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>刘田田</td>
-                                        <td>北京 北京市 海淀区 上地街道东北旺西路8号中关村软件园9号楼</td>
-                                        <td>1774***********4</td>
-                                        <td>
-                                            <a href="#">编辑</a>
-                                            <a href="#">删除</a>
-                                            默认地址
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>沈沉</td>
-                                        <td>北京 北京市 海淀区 上地街道东北旺西路8号中关村软件园9号楼</td>
-                                        <td>1774***********4</td>
-                                        <td>
-                                            <a href="#">编辑</a>
-                                            <a href="#">删除</a>
-                                            <a href="#">设为默认</a>
-                                        </td>
-                                    </tr>
-                                    
-                                </tbody>
-                            </table>                          
-                        </div>
-                        <!--新增地址弹出层-->
-                         <div  tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade edit" style="width:580px;">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
-                                        <h4 id="myModalLabel" class="modal-title">新增地址</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="" class="sui-form form-horizontal">
-                                            <div class="control-group">
-                                            <label class="control-label">收货人：</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-medium">
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">所在地区：</label>
-                                            <div class="controls">
-                                                <div data-toggle="distpicker">
-                                                <div class="form-group area">
-                                                    <select class="form-control" id="province1"></select>
-                                                </div>
-                                                <div class="form-group area">
-                                                    <select class="form-control" id="city1"></select>
-                                                </div>
-                                                <div class="form-group area">
-                                                    <select class="form-control" id="district1"></select>
-                                                </div>
-                                            </div>
-                                            </div>									 
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">详细地址：</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-large">
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">联系电话：</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-medium">
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">邮箱：</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-medium">
-                                            </div>
-                                        </div>
-                                        <div class="control-group">
-                                            <label class="control-label">地址别名：</label>
-                                            <div class="controls">
-                                                <input type="text" class="input-medium">
-                                            </div>
-                                            <div class="othername">
-                                                建议填写常用地址：<a href="#" class="sui-btn btn-default">家里</a>　<a href="#" class="sui-btn btn-default">父母家</a>　<a href="#" class="sui-btn btn-default">公司</a>
-                                            </div>
-                                        </div>
-                                        
-                                        </form>
-                                        
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" data-ok="modal" class="sui-btn btn-primary btn-large">确定</button>
-                                        <button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">取消</button>
-                                    </div>
-                                </div>
-                            </div>
+				<div class="person-info">
+					<div class="person-photo"><img src="/img/_/photo.png" alt=""></div>
+					<div class="person-account" th:if="${user != null}">
+						<span class="name">[[${user.username}]]</span>
+						<span class="safe">账户安全</span>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="list-items">
+					<dl>
+						<dt><i>·</i> 订单中心</dt>
+						<dd><a href="home-index.html">我的订单</a></dd>
+						<dd><a href="home-order-pay.html">待付款</a></dd>
+						<dd><a href="home-order-send.html">待发货</a></dd>
+						<dd><a href="home-order-receive.html">待收货</a></dd>
+						<dd><a href="home-order-evaluate.html">待评价</a></dd>
+					</dl>
+					<dl>
+						<dt><i>·</i> 我的中心</dt>
+						<dd><a href="home-person-collect.html">我的收藏</a></dd>
+						<dd><a href="home-person-footmark.html">我的足迹</a></dd>
+					</dl>
+					<dl>
+						<dt><i>·</i> 物流消息</dt>
+					</dl>
+					<dl>
+						<dt><i>·</i> 设置</dt>
+						<dd><a href="home-setting-info.html">个人信息</a></dd>
+						<dd><a href="home-setting-address.html" class="list-active">地址管理</a></dd>
+						<dd><a href="home-setting-safe.html">安全管理</a></dd>
+					</dl>
+				</div>
+			</div>
+			<!--右侧主内容-->
+			<div class="yui3-u-5-6">
+				<div class="body userAddress">
+					<div class="address-title">
+						<span class="title">地址管理</span>
+						<button style="float: right" class="btn btn-info" title="新建" data-toggle="modal"
+								data-target="#addeditModal">添加新地址
+						</button>
+						<span class="clearfix"></span>
+					</div>
+					<div class="address-detail">
+						<table class="sui-table table-bordered">
+							<thead>
+							<tr>
+								<th>姓名</th>
+								<th>地址</th>
+								<th>联系电话</th>
+								<th>操作</th>
+							</tr>
+							</thead>
+							<tbody id="tbodyAddressId">
+
+							</tbody>
+						</table>
+						<!--						<form id="indexForm">-->
+						<!--							<a href="javascript:toPage(3)">首页</a>-->
+						<!--							<a href="javascript:toPage(1)">上一页</a>-->
+						<!--							<a href="javascript:toPage(2)">下一页</a>-->
+						<!--							<a href="javascript:toPage(4)">尾页</a>-->
+						<!--							第<input type="text" name="pageNum" id="pageNum" size="1px" readonly="readonly">页-->
+						<!--							共<input type="text" name="pages" id="pages" size="1px" disabled="disabled">页-->
+						<!--							共<input type="text" name="total" id="total" size="1px" disabled="disabled">条-->
+						<!--						</form>-->
+					</div>
+					<!--新增地址弹出层-->
+					<div tabindex="-1" id="addeditModal" role="dialog" data-hasfoot="false"
+						 class="sui-modal hide fade edit"
+						 style="width:580px;">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×
+									</button>
+									<h4 id="myModalLabel" class="modal-title">新增地址</h4>
+								</div>
+								<div class="modal-body">
+									<form action="" class="sui-form form-horizontal" id="AddressFormId">
+										<div class="control-group">
+											<label class="control-label">收货人：</label>
+											<div class="controls">
+												<input type="text" name="contact" class="input-medium">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">所在地区：</label>
+											<div class="controls">
+												<div data-toggle="distpicker">
+													<div class="form-group area"><!--onchange="city(this.value)"-->
+														<!--城市-->
+														<select class="form-control" id="province1" name="provinceId"
+																onchange="city(this.value)">
+
+														</select>
+													</div>
+													<div class="form-group area">
+														<!--地区-->
+														<select class="form-control" id="city1" name="cityId"
+																onchange="areas(this.value)"></select>
+													</div>
+													<div class="form-group area">
+														<!--镇-->
+														<select class="form-control" id="district1" name="townId"></select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">详细地址：</label>
+											<div class="controls">
+												<input type="text" name="address" class="input-large">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">联系电话：</label>
+											<div class="controls">
+												<input type="text" name="mobile" class="input-medium">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">邮箱：</label>
+											<div class="controls">
+												<input type="text" class="input-medium">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">地址别名：</label>
+											<div class="controls">
+												<input type="text" name="alias" class="input-medium">
+											</div>
+											<div class="othername">
+												建议填写常用地址：<a href="#" class="sui-btn btn-default">家里</a>　<a href="#"
+																										   class="sui-btn btn-default">父母家</a>　<a
+													href="#" class="sui-btn btn-default">公司</a>
+											</div>
+										</div>
+
+									</form>
+
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" data-ok="modal" class="sui-btn btn-primary btn-large"
+											onclick="insertAddress()">确定
+									</button>
+									<button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">
+										取消
+									</button>
+								</div>
+							</div>
 						</div>
+					</div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 底部栏位 -->
-    <!--页面底部-->
+					<!--编辑窗口（修改窗口）-->
+					<div tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade update"
+						 style="width:580px;">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×
+									</button>
+									<h4 id="myModalLabel_update" class="modal-title">更新地址</h4>
+								</div>
+								<div class="modal-body">
+									<form action="" class="sui-form form-horizontal" id="updateAddressForm">
+										<div class="control-group">
+											<label class="control-label">收货人：</label>
+											<div class="controls">
+												<input type="hidden" id="id">
+												<input type="text" id="contact_update" class="input-medium">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">所在地区：</label>
+											<div class="controls">
+												<div data-toggle="distpicker">
+													<div class="form-group area">
+														<select class="form-control" id="province2"
+																onchange="citytwo(this.value)">
+
+														</select>
+													</div>
+													<div class="form-group area">
+														<select class="form-control" id="city2"
+																onchange="areastwo(this.value)">
+
+														</select>
+													</div>
+													<div class="form-group area">
+														<select class="form-control" id="district2">
+
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">详细地址：</label>
+											<div class="controls">
+												<input type="text" id="address_update" class="input-large">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">联系电话：</label>
+											<div class="controls">
+												<input type="text" id="mobile_update" class="input-medium">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">邮箱：</label>
+											<div class="controls">
+												<input type="text" id="" class="input-medium">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">地址别名：</label>
+											<div class="controls">
+												<input type="text" id="alias_update" class="input-medium">
+											</div>
+											<div class="othername">
+												建议填写常用地址：<a href="#" class="sui-btn btn-default">家里</a>　<a href="#"
+																										   class="sui-btn btn-default">父母家</a>　<a
+													href="#" class="sui-btn btn-default">公司</a>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" data-ok="modal" onclick="updateAddress()"
+											class="sui-btn btn-primary btn-large">确定
+									</button>
+									<button type="button" data-dismiss="modal" class="sui-btn btn-default btn-large">
+										取消
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 底部栏位 -->
+<!--页面底部-->
 <div class="clearfix footer">
 	<div class="py-container">
 		<div class="footlink">
@@ -415,7 +510,7 @@ $(function(){
 					</div>
 					<div class="yui3-u-1-6">
 						<h4>帮助中心</h4>
-						<img src="img/wx_cz.jpg">
+						<img src="/img/wx_cz.jpg">
 					</div>
 				</div>
 			</div>
@@ -439,9 +534,270 @@ $(function(){
 	</div>
 </div>
 <!--页面底部END-->
+<!--<div th:insert="/common/common.html"></div>不能加页面样式会变得混乱-->
+<script>
+	$(function () {
+		getData();
+		province();
+		provincetwo();
+	})
+
+	function getData() {
+		$.ajax({
+			url: "/addressController/getAddress",
+			dataType: "json",
+			// data: $("#indexForm").serialize(),//前台向后台传递的参数,没有数据可以不写{id:id}
+			type: "post",
+			success: function (result) {
+				var data = result.data;
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<tr>\n" +
+							"                                        <td>" + data[i].contact + "</td>\n" +
+							"                                        <td>" + data[i].address + "</td>\n" +
+							"                                        <td>" + data[i].mobile + "</td>\n" +
+							"                                        <td>\n" +
+							"                                            <a data-toggle='modal' data-target='.update' data-keyboard='false' onclick='toUpdate(" + data[i].id + ")' class='sui-btn  btn-info add-new'>编辑</a>\n" +
+							"                                            <a href=\"javascript:deleteAddress(" + data[i].id + ")\">删除</a>\n" +
+							"                                            <a href=\"javascript:updateDefault(" + data[i].id + ")\">设为默认</a>\n" +
+							"                                        </td>\n" +
+							"                                    </tr>";
+				}
+				$("#tbodyAddressId").html(html)
+				$("#pageNum").val(result.data.pageNum)
+				$("#pages").val(result.data.pages)
+				$("#total").val(result.data.total)
+			}
+		})
+	}
+
+	/*三级联动start*/
+	function provincetwo() {
+		$.ajax({
+			url: "/addressController/province",
+			dataType: "json",
+			type: "post",
+			success: function (result) {
+				console.log(result.data)
+				var data = result.data;
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<option value='" + data[i].provinceid + "'>" + data[i].province + "</option>";
+				}
+				$("#province2").html(html)
+			}
+		})
+	}
+
+	/*市*/
+	function citytwo(id) {
+		// alert("provinceid=" + id)
+		$.ajax({
+			url: "/cities/city",
+			dataType: "json",
+			data: {provinceid: id},
+			type: "post",
+			success: function (result) {
+				console.log(result.data)
+				var data = result.data;
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<option value='" + data[i].cityid + "'>" + data[i].city + "</option>";
+				}
+				$("#city2").html(html)
+			}
+		})
+	}
+
+	/*区*/
+	function areastwo(id) {
+		// alert("cityid=" + id)
+		$.ajax({
+			url: "/areas/listAreas",
+			dataType: "json",
+			data: {cityid: id},
+			type: "post",
+			success: function (result) {
+				console.log(result.data)
+				var data = result.data;
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<option value='" + data[i].areaid + "'>" + data[i].area + "</option>";
+				}
+				$("#district2").html(html)
+			}
+		})
+	}
 
 
+	/*回显*/
+	function toUpdate(id) {
+		alert(id)
+		$.ajax({
+			url: "/addressController/toUpdate",
+			data: {id: id},
+			datatype: "json",
+			type: "post",
+			success: function (reslut) {
+				console.log(reslut)
+				var data = reslut.data;
+				$("#id").val(data.id)
+				$("#contact_update").val(data.contact)
+				$("#address_update").val(data.address)
+				$("#mobile_update").val(data.mobile)
+				$("#alias_update").val(data.alias)
+			}
+		})
+	}
 
+	/*修改*/
+	function updateAddress() {
+		$.ajax({
+			url: "/addressController/updateAddress",
+			dataType: "json",
+			data: {
+				id: $("#id").val(),
+				contact: $("#contact_update").val(),
+				provinceId: $("#provinceId_update").val(),
+				address: $("#address_update").val(),
+				mobile: $("#mobile_update").val(),
+				alias: $("#alias_update").val(),
+			},
+			type: "post",
+			success: function (result) {
+				console.log(result)
+				if (result.code == 10000) {
+					alert("修改成功")
+					window.location.reload();
+				} else {
+					alert(result.message)
+				}
+			}, error: function () {
+				alert("修改地址失败，请联系管理员")
+			}
+		})
+	}
+
+
+	/*修改默认地址*/
+	function updateDefault(id) {
+		$.ajax({
+			url: "/addressController/updateDefault",
+			dataType: "json",
+			data: {id: id},
+			type: "post",
+			success: function (result) {
+				console.log(result)
+				if (result.code == 10000) {
+					alert("修改成功")
+					window.location.reload();
+				} else {
+					alert(result.message)
+				}
+			}, error: function () {
+				alert("修改地址失败，请联系管理员")
+			}
+		})
+	}
+
+	/*删除*/
+	function deleteAddress(id) {
+		alert(id)
+		$.ajax({
+			url: "/addressController/deleteAddress",
+			dataType: "json",
+			data: {id: id},
+			type: "post",
+			success: function (result) {
+				if (result.code == 10000) {
+					alert("删除成功")
+					window.location.reload();
+				} else {
+					alert(result.message)
+				}
+			}, error: function () {
+				alert("删除地址失败，请联系管理员")
+			}
+		})
+	}
+
+	/*三级联动start*/
+	function province() {
+		$.ajax({
+			url: "/provinces/province",
+			dataType: "json",
+			type: "post",
+			success: function (result) {
+				var data = result.data;
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<option value='" + data[i].provinceid + "'>" + data[i].province + "</option>";
+				}
+				$("#province1").html(html)
+			}
+		})
+	}
+
+	/*市*/
+	function city(id) {
+		alert("provinceid=" + id)
+		$.ajax({
+			url: "/cities/city",
+			dataType: "json",
+			data: {provinceid: id},
+			type: "post",
+			success: function (result) {
+				console.log(result.data)
+				var data = result.data;
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<option value='" + data[i].cityid + "'>" + data[i].city + "</option>";
+				}
+				$("#city1").html(html)
+			}
+		})
+	}
+
+	/*区*/
+	function areas(id) {
+		alert("cityid=" + id)
+		$.ajax({
+			url: "/areas/listAreas",
+			dataType: "json",
+			data: {cityid: id},
+			type: "post",
+			success: function (result) {
+				console.log(result.data)
+				var data = result.data;
+				var html = "";
+				for (var i = 0; i < data.length; i++) {
+					html += "<option value='" + data[i].areaid + "'>" + data[i].area + "</option>";
+				}
+				$("#district1").html(html)
+			}
+		})
+	}
+
+
+	function insertAddress() {
+		$.ajax({
+			url: "/addressController/insertAddress",
+			dataType: "json",
+			data: $("#AddressFormId").serialize(),
+			type: "post",
+			success: function (result) {
+				if (result.code == 10000) {
+					alert("增加成功")
+					window.location.reload();
+				} else {
+					alert(result.message)
+				}
+			}, error: function () {
+				alert("地址增加失败,请联系管理员")
+			}
+		})
+	}
+</script>
 undefined
 
 </html>

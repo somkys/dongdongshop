@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
+
 @Component
 @RocketMQMessageListener(topic = "topic1",consumerGroup = "group1")
 @Slf4j

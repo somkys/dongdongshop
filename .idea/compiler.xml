@@ -11,8 +11,12 @@
         <module name="dongdongshop_content_service" />
         <module name="dongdongshop_app" />
         <module name="dongdongshop_common" />
+        <module name="dongdongshop_app_service" />
+        <module name="dongdongshop_user_service" />
+        <module name="dongdongshop_order_service" />
         <module name="dongdongshop_service_api" />
         <module name="dongdongshop_freemarker_service" />
+        <module name="dongdongshop_cart_service" />
         <module name="dongdongshop_seller_web" />
       </profile>
     </annotationProcessing>
@@ -24,13 +28,17 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="dongdongshop_admin_web" options="-parameters" />
       <module name="dongdongshop_app" options="-parameters" />
+      <module name="dongdongshop_app_service" options="-parameters" />
+      <module name="dongdongshop_cart_service" options="-parameters" />
       <module name="dongdongshop_common" options="-parameters" />
       <module name="dongdongshop_content_service" options="-parameters" />
       <module name="dongdongshop_freemarker_service" options="-parameters" />
+      <module name="dongdongshop_order_service" options="-parameters" />
       <module name="dongdongshop_seller_service" options="-parameters" />
       <module name="dongdongshop_seller_web" options="-parameters" />
       <module name="dongdongshop_service_api" options="-parameters" />
       <module name="dongdongshop_third_party" options="-parameters" />
+      <module name="dongdongshop_user_service" options="-parameters" />
     </option>
   </component>
 </project>

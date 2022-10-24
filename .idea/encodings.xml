@@ -3,13 +3,17 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/dongdongshop_admin_web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dongdongshop_app_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dongdongshop_cart_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_content_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_freemarker_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dongdongshop_order_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_seller_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_seller_web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_service_api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_third_party/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dongdongshop_user_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
