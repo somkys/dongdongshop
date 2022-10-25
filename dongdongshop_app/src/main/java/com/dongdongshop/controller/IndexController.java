@@ -11,4 +11,9 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/toPay")
+    public String toPay(){
+        return "pay";
+    }
+
 }

@@ -6,6 +6,7 @@ import com.dongdongshop.entity.Address;
 import com.dongdongshop.mapper.AddressMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dongdongshop.service.IAddressService;
+import com.dongdongshop.vo.AreaVO;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,10 @@ public class AddressServiceImpl extends ServiceImpl<AddressMapper, Address> impl
     public void updateDefault(String username , Long id) {
         baseMapper.updateDefault(username);
         baseMapper.updateDefaultTwo(id);
+    }
+
+    @Override
+    public List<AreaVO> getAddressVo(String username) {
+        return baseMapper.getAddressVo(username);
     }
 }

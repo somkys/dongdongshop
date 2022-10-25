@@ -8,4 +8,13 @@
     <update id="updateDefaultTwo">
         update tb_address  set is_default = '1' where id = #{id}
     </update>
+    <select id="getAddressVo" resultType="com.dongdongshop.vo.AreaVO">
+        SELECT a.id,a.user_id userId ,a.province_id provinceId , a.city_id cityId , a.town_id townId ,a.address , a.mobile , a.contact,a.alias,p.province,c.city,r.area
+        FROM tb_address a
+                 LEFT JOIN tb_provinces p on a.province_id = p.provinceid
+                 LEFT JOIN tb_cities c on a.city_id = c.cityid
+                 LEFT JOIN tb_areas r on a.town_id = r.areaid
+        WHERE a.user_id=#{username}
+
+    </select>
 </mapper>

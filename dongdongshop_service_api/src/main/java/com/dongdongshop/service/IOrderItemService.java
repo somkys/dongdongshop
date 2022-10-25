@@ -1,8 +1,6 @@
 package com.dongdongshop.service;
-
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.dongdongshop.entity.OrderItem;
-
 import java.util.List;
 
 /**
@@ -16,5 +14,9 @@ import java.util.List;
 public interface IOrderItemService extends IService<OrderItem> {
 
     List<OrderItem> listByItemId(Long itemId);
+
+    void updateOrderIdById(List<Long> orderItemIds,Long orderId);
+
+    List<OrderItem> listOrderItem(Long goodsId);
 
 }

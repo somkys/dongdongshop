@@ -3,6 +3,7 @@ import com.dongdongshop.entity.Address;
 import com.dongdongshop.entity.User;
 import com.dongdongshop.service.IAddressService;
 import com.dongdongshop.utils.Result;
+import com.dongdongshop.vo.AreaVO;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
@@ -99,6 +100,17 @@ public class AddressController {
         iAddressService.updateDefault(user.getUsername(),id);
         return Result.Ok();
     }
+
+    @RequestMapping("getAddressVo")
+    @ResponseBody
+    public Result getAddressVo(){
+        //获取当前登录用户信息
+        User user = (User) SecurityUtils.getSubject().getPrincipal();
+        List<AreaVO> areaVOS = iAddressService.getAddressVo(user.getUsername());
+        return Result.Ok().setData(areaVOS);
+    }
+
+
 
 
 }

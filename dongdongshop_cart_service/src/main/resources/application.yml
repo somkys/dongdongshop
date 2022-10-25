@@ -22,7 +22,7 @@ mybatis-plus:
 
 #    打印sql日志
 server:
-  port: 5001
+  port: 6001
 
 dubbo:
   application:
@@ -31,7 +31,7 @@ dubbo:
     address: zookeeper://127.0.0.1:2181
   protocol:
     name: dubbo
-    port: 20805
+    port: 20806
   scan:
     base-packages: com.dongdongshop.service
 
