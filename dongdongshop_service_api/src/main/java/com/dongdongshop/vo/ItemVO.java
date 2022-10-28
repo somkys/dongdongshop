@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -14,5 +15,7 @@ import java.util.List;
 public class ItemVO implements Serializable {
     private String sellerID;
     private String sellerName;
+    private LocalDateTime createTime;
+    private String tradeNum;
     private List<OrderItem> orderItemList;
 }

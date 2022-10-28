@@ -3,6 +3,9 @@ package com.dongdongshop.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,6 +20,9 @@ import java.time.LocalDateTime;
  * @since 2022-10-24
  */
 @TableName("tb_order")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -147,210 +153,7 @@ public class Order implements Serializable {
      */
     private String sellerId;
 
-    public Long getOrderId() {
-        return orderId;
-    }
+    private String tradeNum;
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-    public BigDecimal getPayment() {
-        return payment;
-    }
-
-    public void setPayment(BigDecimal payment) {
-        this.payment = payment;
-    }
-    public String getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType;
-    }
-    public String getPostFee() {
-        return postFee;
-    }
-
-    public void setPostFee(String postFee) {
-        this.postFee = postFee;
-    }
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-    public LocalDateTime getPaymentTime() {
-        return paymentTime;
-    }
-
-    public void setPaymentTime(LocalDateTime paymentTime) {
-        this.paymentTime = paymentTime;
-    }
-    public LocalDateTime getConsignTime() {
-        return consignTime;
-    }
-
-    public void setConsignTime(LocalDateTime consignTime) {
-        this.consignTime = consignTime;
-    }
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-    public LocalDateTime getCloseTime() {
-        return closeTime;
-    }
-
-    public void setCloseTime(LocalDateTime closeTime) {
-        this.closeTime = closeTime;
-    }
-    public String getShippingName() {
-        return shippingName;
-    }
-
-    public void setShippingName(String shippingName) {
-        this.shippingName = shippingName;
-    }
-    public String getShippingCode() {
-        return shippingCode;
-    }
-
-    public void setShippingCode(String shippingCode) {
-        this.shippingCode = shippingCode;
-    }
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-    public String getBuyerMessage() {
-        return buyerMessage;
-    }
-
-    public void setBuyerMessage(String buyerMessage) {
-        this.buyerMessage = buyerMessage;
-    }
-    public String getBuyerNick() {
-        return buyerNick;
-    }
-
-    public void setBuyerNick(String buyerNick) {
-        this.buyerNick = buyerNick;
-    }
-    public String getBuyerRate() {
-        return buyerRate;
-    }
-
-    public void setBuyerRate(String buyerRate) {
-        this.buyerRate = buyerRate;
-    }
-    public String getReceiverAreaName() {
-        return receiverAreaName;
-    }
-
-    public void setReceiverAreaName(String receiverAreaName) {
-        this.receiverAreaName = receiverAreaName;
-    }
-    public String getReceiverMobile() {
-        return receiverMobile;
-    }
-
-    public void setReceiverMobile(String receiverMobile) {
-        this.receiverMobile = receiverMobile;
-    }
-    public String getReceiverZipCode() {
-        return receiverZipCode;
-    }
-
-    public void setReceiverZipCode(String receiverZipCode) {
-        this.receiverZipCode = receiverZipCode;
-    }
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
-    public LocalDateTime getExpire() {
-        return expire;
-    }
-
-    public void setExpire(LocalDateTime expire) {
-        this.expire = expire;
-    }
-    public String getInvoiceType() {
-        return invoiceType;
-    }
-
-    public void setInvoiceType(String invoiceType) {
-        this.invoiceType = invoiceType;
-    }
-    public String getSourceType() {
-        return sourceType;
-    }
-
-    public void setSourceType(String sourceType) {
-        this.sourceType = sourceType;
-    }
-    public String getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-            "orderId=" + orderId +
-            ", payment=" + payment +
-            ", paymentType=" + paymentType +
-            ", postFee=" + postFee +
-            ", status=" + status +
-            ", createTime=" + createTime +
-            ", updateTime=" + updateTime +
-            ", paymentTime=" + paymentTime +
-            ", consignTime=" + consignTime +
-            ", endTime=" + endTime +
-            ", closeTime=" + closeTime +
-            ", shippingName=" + shippingName +
-            ", shippingCode=" + shippingCode +
-            ", userId=" + userId +
-            ", buyerMessage=" + buyerMessage +
-            ", buyerNick=" + buyerNick +
-            ", buyerRate=" + buyerRate +
-            ", receiverAreaName=" + receiverAreaName +
-            ", receiverMobile=" + receiverMobile +
-            ", receiverZipCode=" + receiverZipCode +
-            ", receiver=" + receiver +
-            ", expire=" + expire +
-            ", invoiceType=" + invoiceType +
-            ", sourceType=" + sourceType +
-            ", sellerId=" + sellerId +
-        "}";
-    }
+    private String tradeLiushui;
 }

@@ -1,0 +1,10 @@
+server:
+  port: 7000
+dubbo:
+  application:
+    name: dongdongshop_seckill
+  registry:
+    address: zookeeper://127.0.0.1:2181
+spring:
+  thymeleaf:
+    cache: false

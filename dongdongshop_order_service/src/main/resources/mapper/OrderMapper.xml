@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dongdongshop.mapper.OrderMapper">
+    <update id="updateLiushuiById">
+        update tb_order set status=#{i} , trade_liushui = #{trade_no} where trade_num = #{out_trade_no}
+    </update>
 
+    <resultMap id="queryPayVo" type="com.dongdongshop.vo.ItemVO">
+        <result column="seller_iD" property="sellerID"></result>
+        <result column="name" property="sellerName"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="trade_num" property="tradeNum"></result>
+
+        <collection property="orderItemList" ofType="com.dongdongshop.entity.OrderItem">
+            <result column="id" property="sid"></result>
+            <result column="item_id" property="itemId"></result>
+            <result column="goods_id" property="goodsId"></result>
+            <result column="order_id" property="orderId"></result>
+            <result column="title" property="title"></result>
+            <result column="price" property="price"></result>
+            <result column="num" property="num"></result>
+            <result column="total_fee" property="totalFee"></result>
+            <result column="pic_path" property="picPath"></result>
+            <result column="seller_id" property="sellerId"></result>
+            <result column="trade_num" property="tradeNum"></result>
+            <result column="trade_liushui" property="tradeLiushui"></result>
+        </collection>
+    </resultMap>
+
+    <select id="queryPay" resultMap="queryPayVo">
+        SELECT
+            *
+        FROM
+            tb_order r
+                JOIN tb_order_item m ON r.order_id = m.order_id
+                JOIN tb_seller s ON m.seller_id = s.seller_id
+        WHERE m.trade_num = #{widtQout_trade_no} and m.status = '2'
+    </select>
+    <select id="selectUserIdByOutTradeNo" resultType="com.dongdongshop.entity.Order">
+        select * from tb_order where out_trade_no = #{out_trade_no}
+    </select>
 </mapper>

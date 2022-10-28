@@ -14,16 +14,16 @@ public class MybatisPlusCodeConfig {
                     builder.author("Smoky") // 设置作者
 //                            .enableSwagger() // 开启 swagger 模式
                              .fileOverride() // 覆盖已生成文件
-                            .outputDir("F:\\workspace_01\\shiro\\dongdongshop_parent\\dongdongshop_order_service" + "/src/main/java"); // 指定输出目录
+                            .outputDir("F:\\workspace_01\\shiro\\dongdongshop_parent\\dongdongshop_seckill_service" + "/src/main/java"); // 指定输出目录
                 })
                 //
                 .packageConfig(builder -> {
                     builder.parent("com") // 设置父包路径
                             .moduleName("dongdongshop") // 设置父包模块名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "F:\\workspace_01\\shiro\\dongdongshop_parent\\dongdongshop_order_service"+"/src/main/resources/mapper")); // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, "F:\\workspace_01\\shiro\\dongdongshop_parent\\dongdongshop_seckill_service"+"/src/main/resources/mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("tb_order") // 设置需要生成的表名
+                    builder.addInclude("tb_seckill_order") // 设置需要生成的表名
                             .addTablePrefix("t_", "c_","tb"); // 设置过滤表前缀
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-    @RequestMapping({"toindex", "/"})
+    @RequestMapping({"/toindex", "/"})
     public String toindex() {
         return "index";
     }
@@ -14,6 +14,11 @@ public class IndexController {
     @RequestMapping("/toPay")
     public String toPay(){
         return "pay";
+    }
+
+    @RequestMapping("/alipay")
+    public String alipay(){
+        return "alipay/index";
     }
 
 }

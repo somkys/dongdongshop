@@ -1,6 +1,9 @@
 package com.dongdongshop.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,11 +17,16 @@ import java.math.BigDecimal;
  * @since 2022-10-21
  */
 @TableName("tb_order_item")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    private String sid;
 
     /**
      * 商品id
@@ -62,90 +70,9 @@ public class OrderItem implements Serializable {
 
     private String sellerId;
 
-    public Long getId() {
-        return id;
-    }
+    private String tradeNum;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public Long getItemId() {
-        return itemId;
-    }
+    private String tradeLiushui;
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
-    public Long getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(Long goodsId) {
-        this.goodsId = goodsId;
-    }
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-    public BigDecimal getTotalFee() {
-        return totalFee;
-    }
-
-    public void setTotalFee(BigDecimal totalFee) {
-        this.totalFee = totalFee;
-    }
-    public String getPicPath() {
-        return picPath;
-    }
-
-    public void setPicPath(String picPath) {
-        this.picPath = picPath;
-    }
-    public String getSellerId() {
-        return sellerId;
-    }
-
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-            "id=" + id +
-            ", itemId=" + itemId +
-            ", goodsId=" + goodsId +
-            ", orderId=" + orderId +
-            ", title=" + title +
-            ", price=" + price +
-            ", num=" + num +
-            ", totalFee=" + totalFee +
-            ", picPath=" + picPath +
-            ", sellerId=" + sellerId +
-        "}";
-    }
+    private String status;
 }

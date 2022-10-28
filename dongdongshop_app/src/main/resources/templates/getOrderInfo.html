@@ -462,7 +462,8 @@
 			success: function (result) {
 				if (result.code==10000){
 					alert("提交成功")
-					window.location.href="/toPay";
+					result.data
+					window.location.href="/alipay/tradePagePay?WIDout_trade_no="+result.data.WIDout_trade_no+"&WIDtotal_amount="+result.data.WIDtotal_amount+"&WIDsubject="+result.data.WIDsubject+"&WIDbody=商品描述";
 				}else {
 					alert(result.message)
 				}

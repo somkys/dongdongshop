@@ -27,12 +27,30 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemMapper, OrderItem
     }
 
     @Override
-    public void updateOrderIdById(List<Long> orderItemIds,Long orderId) {
+    public void updateOrderIdById(List<Long> orderItemIds,Long orderId,long nextId) {
         baseMapper.updateOrderIdById(orderItemIds,orderId);
+
+        baseMapper.updateTradeNoById(orderItemIds,nextId);
     }
 
     @Override
-    public List<OrderItem> listOrderItem(Long goodsId) {
-        return baseMapper.selectList(new QueryWrapper<OrderItem>().eq("goods_id",goodsId));
+    public List<OrderItem> listOrderItem( List<Long> goodsIds) {
+        return baseMapper.selectList(new QueryWrapper<OrderItem>().in("goods_id",goodsIds));
     }
+
+    @Override
+    public void updateLiushuiById(String out_trade_no,Integer i, String trade_no) {
+        baseMapper.updateLiushuiById(out_trade_no,i,trade_no);
+    }
+
+    @Override
+    public void updateLiushuiByIdd(Long out_biz_no, Integer i,String trade_no) {
+        baseMapper.updateLiushuiByIdd(out_biz_no,i,trade_no);
+    }
+
+    @Override
+    public List<OrderItem> queryPay(String widtQout_trade_no) {
+        return baseMapper.selectList(new QueryWrapper<OrderItem>().eq("trade_num",widtQout_trade_no));
+    }
+
 }

@@ -22,7 +22,7 @@ dubbo:
     address: zookeeper://127.0.0.1:2181
   protocol:
     name: dubbo
-    port: 20800
+    port: 20810
   scan:
     base-packages: com.dongdongshop.service
 

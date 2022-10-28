@@ -1,7 +1,6 @@
 package com.dongdongshop.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.dongdongshop.entity.ItemCat;
 import com.dongdongshop.mapper.ItemCatMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,13 +8,8 @@ import com.dongdongshop.service.IItemCatService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 /**
  * <p>

@@ -8,4 +8,16 @@
             #{id}
         </foreach>
      </update>
+    <update id="updateTradeNoById">
+        update tb_order_item set trade_num = #{nextId} where id in
+        <foreach collection="orderItemIds" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </update>
+    <update id="updateLiushuiById">
+        update tb_order_item set status = #{i} , trade_liushui = #{trade_no} where trade_num = #{out_trade_no}
+    </update>
+    <update id="updateLiushuiByIdd">
+        update tb_order_item set status = #{i} , trade_liushui = #{trade_no} where id = #{out_biz_no}
+    </update>
 </mapper>

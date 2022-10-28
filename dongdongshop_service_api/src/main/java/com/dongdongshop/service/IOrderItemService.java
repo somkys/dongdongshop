@@ -15,8 +15,14 @@ public interface IOrderItemService extends IService<OrderItem> {
 
     List<OrderItem> listByItemId(Long itemId);
 
-    void updateOrderIdById(List<Long> orderItemIds,Long orderId);
+    void updateOrderIdById(List<Long> orderItemIds,Long orderId,long nextId);
 
-    List<OrderItem> listOrderItem(Long goodsId);
+    List<OrderItem> listOrderItem( List<Long> goodsIds);
+
+    void updateLiushuiById(String out_trade_no, Integer i,String trade_no);
+
+    void updateLiushuiByIdd(Long out_biz_no, Integer i,String trade_no);
+
+    List<OrderItem> queryPay(String widtQout_trade_no);
 
 }

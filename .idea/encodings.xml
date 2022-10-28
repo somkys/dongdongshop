@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/dongdongshop_content_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_freemarker_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_order_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dongdongshop_seckill/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dongdongshop_seckill_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_seller_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_seller_web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dongdongshop_service_api/src/main/java" charset="UTF-8" />

@@ -31,8 +31,10 @@ dubbo:
     address: zookeeper://127.0.0.1:2181
   protocol:
     name: dubbo
-    port: 20804
+    port: 20809
   scan:
     base-packages: com.dongdongshop.service
 
+rocketmq:
+  name-server: 192.168.198.129:9876
 
