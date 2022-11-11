@@ -1,6 +1,4 @@
 package com.dongdongshop.controller;
-
-
 import com.dongdongshop.entity.SeckillGoods;
 import com.dongdongshop.entity.User;
 import com.dongdongshop.service.ISeckillGoodsService;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.List;
 
 /**

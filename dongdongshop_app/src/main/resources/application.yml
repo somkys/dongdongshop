@@ -26,3 +26,5 @@ rocketmq:
 
 shiro:
   loginUrl: /
+
+

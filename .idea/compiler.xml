@@ -20,6 +20,7 @@
         <module name="dongdongshop_order_service" />
         <module name="dongdongshop_freemarker_service" />
         <module name="dongdongshop_seller_web" />
+        <module name="dongdongshop_comment_service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -32,6 +33,7 @@
       <module name="dongdongshop_app" options="-parameters" />
       <module name="dongdongshop_app_service" options="-parameters" />
       <module name="dongdongshop_cart_service" options="-parameters" />
+      <module name="dongdongshop_comment_service" options="-parameters" />
       <module name="dongdongshop_common" options="-parameters" />
       <module name="dongdongshop_content_service" options="-parameters" />
       <module name="dongdongshop_freemarker_service" options="-parameters" />

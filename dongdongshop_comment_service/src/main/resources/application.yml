@@ -1,0 +1,19 @@
+#    打印sql日志
+server:
+  port: 8001
+
+dubbo:
+  application:
+    name: dongdongshop_comment_service
+  registry:
+    address: zookeeper://127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 20812
+  scan:
+    base-packages: com.dongdongshop.service
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://192.168.198.129:27017/comment

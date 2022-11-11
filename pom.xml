@@ -23,6 +23,7 @@
         <module>dongdongshop_order_service</module>
         <module>dongdongshop_seckill</module>
         <module>dongdongshop_seckill_service</module>
+        <module>dongdongshop_comment_service</module>
     </modules>
 
     <parent>
